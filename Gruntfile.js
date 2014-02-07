@@ -19,9 +19,9 @@ module.exports = function(grunt) {
 					ieCompat: true
 				},
 				files: {
-					'good-reviews/assets/css/style.css': [
-						'good-reviews/assets/src/less/style.less',
-						'good-reviews/assets/src/less/style-*.less'
+					'good-reviews-wp/assets/css/style.css': [
+						'good-reviews-wp/assets/src/less/style.less',
+						'good-reviews-wp/assets/src/less/style-*.less'
 					]
 				}
 			}
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 		// Configure JSHint
 		jshint: {
 			test: {
-				src: 'good-reviews/assets/src/js/*.js'
+				src: 'good-reviews-wp/assets/src/js/*.js'
 			}
 		},
 
@@ -38,9 +38,9 @@ module.exports = function(grunt) {
 		concat: {
 			build: {
 				files: {
-					'good-reviews/assets/js/frontend.js': [
-						'good-reviews/assets/src/js/frontend.js',
-						'good-reviews/assets/src/js/frontend-*.js'
+					'good-reviews-wp/assets/js/frontend.js': [
+						'good-reviews-wp/assets/src/js/frontend.js',
+						'good-reviews-wp/assets/src/js/frontend-*.js'
 					]
 				}
 			}
@@ -53,8 +53,8 @@ module.exports = function(grunt) {
 			},
 			build: {
 				files: {
-					'good-reviews/assets/js/frontend.js' : 'good-reviews/assets/src/js/frontend.js',
-					'good-reviews/assets/js/admin.js' : 'good-reviews/assets/src/js/admin.js'
+					'good-reviews-wp/assets/js/frontend.js' : 'good-reviews-wp/assets/src/js/frontend.js',
+					'good-reviews-wp/assets/js/admin.js' : 'good-reviews-wp/assets/src/js/admin.js'
 				}
 			}
 		},
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
 			main: {
 				files: [
 					{
-						cwd: 'good-reviews/',
+						cwd: 'good-reviews-wp/',
 						src: '**',
 						dest: export_dir + '/<%= pkg.name %>'
 					}
@@ -74,15 +74,15 @@ module.exports = function(grunt) {
 		// Watch for changes on some files and auto-compile them
 		watch: {
 			less: {
-				files: ['good-reviews/assets/src/less/*.less'],
+				files: ['good-reviews-wp/assets/src/less/*.less'],
 				tasks: ['less', 'sync']
 			},
 			js: {
-				files: ['good-reviews/assets/src/js/*.js'],
+				files: ['good-reviews-wp/assets/src/js/*.js'],
 				tasks: ['jshint', 'concat', 'uglify', 'sync']
 			},
 			sync: {
-				files: ['!good-reviews/**/*.less', '!good-reviews/**/*.css', '!good-reviews/**/*.js', 'good-reviews/**'],
+				files: ['!good-reviews-wp/**/*.less', '!good-reviews-wp/**/*.css', '!good-reviews-wp/**/*.js', 'good-reviews-wp/**'],
 				tasks: ['sync']
 			}
 		}

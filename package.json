@@ -1,5 +1,5 @@
 {
-  "name": "good-reviews",
+  "name": "good-reviews-wp",
   "description": "Add snippets of positive reviews and link to good reviews of your product or services on other websites. Outputs proper Schema.org markup to ensure the reviews are picked up by Google and other search indexers.",
   "version": "0.0.1",
   "author": {
