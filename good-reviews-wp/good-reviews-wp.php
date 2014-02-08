@@ -39,6 +39,9 @@ class grfwpInit {
 		define( 'GRFWP_PLUGIN_URL', untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) );
 		define( 'GRFWP_PLUGIN_FNAME', plugin_basename( __FILE__ ) );
 		define( 'GRFWP_REVIEW_POST_TYPE', 'grfwp-review' );
+		
+		// Load template functions
+		require_once( 'functions.php' );
 
 		// Initialize the plugin
 		add_action( 'init', array( $this, 'load_config' ) );
@@ -54,6 +57,22 @@ class grfwpInit {
 		// Order review posts in admin screen by menu order
 		add_filter('pre_get_posts', array( $this, 'admin_order_posts' ) );
 
+		// Transform review $content variable to output review
+		add_filter( 'the_content', array( $this, 'append_to_content' ) );
+		
+		// Flush the rewrite rules for the custom post types
+		register_activation_hook( __FILE__, array( $this, 'rewrite_flush' ) );
+
+	}
+
+	/**
+	 * Flush the rewrite rules when this plugin is activated to update with
+	 * custom post types
+	 * @since 0.1
+	 */
+	public function rewrite_flush() {
+		$this->cpts->load_cpts();
+		flush_rewrite_rules();
 	}
 
 	/**
@@ -115,12 +134,12 @@ class grfwpInit {
 	 * Run callback on every element in array recursively
 	 *
 	 * Used to sanitize all values in an array
-	 * @since 1.0
+	 * @since 0.1
 	 */
 	public function array_filter_recursive( $arr, $callback ) {
 		foreach ( $arr as &$value ) {
 			if ( is_array( $value ) ) {
-				$value = tpfwpInit::array_filter_recursive( $value, $callback );
+				$value = grfwpInit::array_filter_recursive( $value, $callback );
 			}
 		}
 		return array_filter( $arr, $callback );
@@ -128,12 +147,41 @@ class grfwpInit {
 
 	/**
 	 * Tranform an array of CSS classes into an HTML attribute
-	 * @since 1.0
+	 * @since 0.1
 	 */
 	public function format_classes( $classes ) {
 		if ( count( $classes ) ) {
 			return ' class="' . join(" ", $classes) . '"';
 		}
+	}
+
+	/**
+	 * Transform review $content variable to output review
+	 * @since 0.1
+	 */
+	function append_to_content( $content ) {
+		global $post;
+
+		if ( GRFWP_REVIEW_POST_TYPE !== $post->post_type || !is_main_query() || !in_the_loop() ) {
+			return $content;
+		}
+
+		// We must disable this filter while we're rendering the menu in order to
+		// prevent it from falling into a recursive loop with each review's
+		// content.
+		remove_action( 'the_content', array( $this, 'append_to_content' ) );
+
+		$args = array(
+			'review'	=> $post->ID
+		);
+		$args = apply_filters( 'grfwp_post_content_args', $args );
+
+		$content = grfwp_print_reviews( $args );
+
+		// Restore this filter
+		add_action( 'the_content', array( $this, 'append_to_content' ) );
+
+		return $content;
 	}
 
 }

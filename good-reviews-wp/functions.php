@@ -8,7 +8,8 @@ function grfwp_reviews_shortcode( $atts ) {
 	return grfwp_print_reviews(
 		shortcode_atts(
 			array(
-				'review' => null
+				'review' => null,
+				'category' => null
 			),
 			$atts
 		)
@@ -39,6 +40,11 @@ function grfwp_print_reviews( $args ) {
 		$q_args['p'] = $args['review'];
 		unset( $q_args['posts_per_page'] );
 	}
+	
+	// Restrict reviews to a certain category
+	if ( isset( $args['category'] ) ) {
+		$q_args['grfwp-category'] = $args['category'];
+	}
 
 	$q_args = apply_filters( 'grfwp_query_args', $q_args );
 
@@ -48,9 +54,11 @@ function grfwp_print_reviews( $args ) {
 	$output = '';
 
 	if( count( $reviews->posts ) ) :
+	
+		global $grfwp_controller;
 
 		// Enqueue the frontend scripts and styles
-		grfwpInit::enqueue_assets();
+		$grfwp_controller->enqueue_assets();
 
 		// Get information about this site to use in the itemReviewed schema.
 		$reviewed_name = esc_attr( get_bloginfo( 'name' ) );
@@ -62,13 +70,11 @@ function grfwp_print_reviews( $args ) {
 		// @note if we print directly here instead of capturing the output, the
 		// menu item will appear above any other content in the page/post.
 		ob_start();
-
 		?>
 
 		<div class="gr-reviews gr-reviews-<?php if ( isset( $args['review'] ) ) : ?>single<?php else : ?>all<?php endif; ?>">
 
 		<?php
-
 			// Loop over the results and display each review
 			$i = 0;
 			foreach( $reviews->posts as $post ) :
@@ -89,14 +95,14 @@ function grfwp_print_reviews( $args ) {
 					array_push( $css_classes, 'gr-item-no-image' );
 				}
 
-				$this->cpts->get_post_metadata();
-				$review_url = isset( $this->cpts->post_metadata['review_url'] ) ? $this->post_metadata['review_url'] : '';
-				$reviewer_org = isset( $this->cpts->post_metadata['reviewer_org'] ) ? $this->post_metadata['reviewer_org'] : '';
-				$reviewer_url = isset( $this->cpts->post_metadata['reviewer_url'] ) ? $this->post_metadata['reviewer_url'] : '';
-				$reviewer_date = isset( $this->cpts->post_metadata['reviewer_date'] ) ? $this->post_metadata['reviewer_date'] : '';
-				$rating = isset( $this->cpts->post_metadata['rating'] ) ? $this->post_metadata['rating'] : '';
-				$rating_max = isset( $this->cpts->post_metadata['rating_max'] ) ? $this->post_metadata['rating_max'] : '';
-				$rating_display = isset( $this->cpts->post_metadata['rating_display'] ) ? $this->post_metadata['rating_display'] : '';
+				$grfwp_controller->cpts->get_post_metadata();
+				$review_url = isset( $grfwp_controller->cpts->post_metadata['review_url'] ) ? $grfwp_controller->cpts->post_metadata['review_url'] : '';
+				$reviewer_org = isset( $grfwp_controller->cpts->post_metadata['reviewer_org'] ) ? $grfwp_controller->cpts->post_metadata['reviewer_org'] : '';
+				$reviewer_url = isset( $grfwp_controller->cpts->post_metadata['reviewer_url'] ) ? $grfwp_controller->cpts->post_metadata['reviewer_url'] : '';
+				$reviewer_date = isset( $grfwp_controller->cpts->post_metadata['reviewer_date'] ) ? $grfwp_controller->cpts->post_metadata['reviewer_date'] : '';
+				$rating = isset( $grfwp_controller->cpts->post_metadata['rating'] ) ? $grfwp_controller->cpts->post_metadata['rating'] : '';
+				$rating_max = isset( $grfwp_controller->cpts->post_metadata['rating_max'] ) ? $grfwp_controller->cpts->post_metadata['rating_max'] : '';
+				$rating_display = isset( $grfwp_controller->cpts->post_metadata['rating_display'] ) ? $grfwp_controller->cpts->post_metadata['rating_display'] : '';
 
 				// Get the rating
 				if ( $rating && $rating_display ) {
