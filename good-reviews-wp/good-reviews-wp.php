@@ -99,7 +99,7 @@ class grfwpInit {
 	 * @since 0.0.1
 	 */
 	public function enqueue_assets() {
-		wp_enqueue_style( 'gr-frontend', GRFWP_PLUGIN_URL . '/assets/css/frontend.css', '1.0' );
+		wp_enqueue_style( 'gr-frontend', GRFWP_PLUGIN_URL . '/assets/css/style.css', '1.0' );
 	}
 
 	/**

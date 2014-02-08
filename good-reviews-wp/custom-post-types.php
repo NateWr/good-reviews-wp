@@ -10,6 +10,8 @@ if ( !class_exists( 'grfwpCustomPostTypes' ) ) {
 class grfwpCustomPostTypes {
 
 	public $post_metadata = null;
+	
+	public $current_post = 0;
 
 	public function __construct() {
 
@@ -294,10 +296,14 @@ class grfwpCustomPostTypes {
 	 * Retrieve post metadata
 	 * @since 0.1
 	 */
-	public function get_post_metadata() {
-		if ( !isset( $this->post_metadata ) ) {
+	public function get_post_metadata( $id = null) {
+		if ( !isset( $id ) ) {
 			global $post;
-			$this->post_metadata = get_post_meta( $post->ID, 'grfwp', true );
+			$id = $post->ID;
+		}
+		if ( !isset( $this->post_metadata ) || $id != $this->current_post ) {
+			$this->current_post = $id;
+			$this->post_metadata = get_post_meta( $id, 'grfwp', true );
 		}
 	}
 

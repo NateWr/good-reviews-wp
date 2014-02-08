@@ -95,7 +95,7 @@ function grfwp_print_reviews( $args ) {
 					array_push( $css_classes, 'gr-item-no-image' );
 				}
 
-				$grfwp_controller->cpts->get_post_metadata();
+				$grfwp_controller->cpts->get_post_metadata( $post->ID );
 				$review_url = isset( $grfwp_controller->cpts->post_metadata['review_url'] ) ? $grfwp_controller->cpts->post_metadata['review_url'] : '';
 				$reviewer_org = isset( $grfwp_controller->cpts->post_metadata['reviewer_org'] ) ? $grfwp_controller->cpts->post_metadata['reviewer_org'] : '';
 				$reviewer_url = isset( $grfwp_controller->cpts->post_metadata['reviewer_url'] ) ? $grfwp_controller->cpts->post_metadata['reviewer_url'] : '';
