@@ -135,7 +135,9 @@ function grfwp_print_reviews( $args ) {
 
 							<meta itemprop="ratingValue" content="<?php echo esc_attr( $rating ); ?>">
 							<meta itemprop="bestRating" content="<?php echo esc_attr( $rating_max ); ?>">
-							<?php echo str_repeat( '<img src="' . GRFWP_PLUGIN_URL . '/img/icons/star.png" alt="' . esc_attr( $rating ) . '/' . esc_attr( $rating_max ) . '">', esc_attr( $rating ) ); ?>
+							<span class="screen-reader-text"><?php echo esc_attr( $rating ) . '/' . esc_attr( $rating_max ); ?></span>
+							<?php echo str_repeat( '<div class="dashicons dashicons-star-filled"></div>', $rating ); ?>
+							<?php echo str_repeat( '<div class="dashicons dashicons-star-empty"></div>', ( $rating_max - $rating ) ); ?>
 
 						<?php endif; ?>
 
