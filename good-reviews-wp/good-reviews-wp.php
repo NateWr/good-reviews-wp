@@ -39,7 +39,7 @@ class grfwpInit {
 		define( 'GRFWP_PLUGIN_URL', untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) );
 		define( 'GRFWP_PLUGIN_FNAME', plugin_basename( __FILE__ ) );
 		define( 'GRFWP_REVIEW_POST_TYPE', 'grfwp-review' );
-		
+
 		// Load template functions
 		require_once( 'functions.php' );
 
@@ -59,9 +59,13 @@ class grfwpInit {
 
 		// Transform review $content variable to output review
 		add_filter( 'the_content', array( $this, 'append_to_content' ) );
-		
+
 		// Flush the rewrite rules for the custom post types
 		register_activation_hook( __FILE__, array( $this, 'rewrite_flush' ) );
+
+		// Register the widget
+		require_once( 'widgets/WidgetReviews.class.php' );
+		add_action( 'widgets_init', create_function( '', 'return register_widget( "grfwpWidgetReviews" );' ) );
 
 	}
 

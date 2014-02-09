@@ -15,9 +15,9 @@ class grfwpWidgetReviews extends WP_Widget {
 	function __construct() {
 
 		parent::__construct(
-			'gr_widget_reviews',
-			__('Good Reviews', GR_TEXTDOMAIN),
-			array( 'description' => __( 'Display one or all of your reviews.', GR_TEXTDOMAIN ), )
+			'grfwp_widget_reviews',
+			__( 'Good Reviews', GRFWP_TEXTDOMAIN ),
+			array( 'description' => __( 'Display one or all of your reviews.', GRFWP_TEXTDOMAIN ), )
 		);
 
 	}
@@ -42,7 +42,7 @@ class grfwpWidgetReviews extends WP_Widget {
 			$title = apply_filters( 'widget_title', $instance['title'] );
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
-		echo gr_reviews_shortcode( $atts );
+		echo grfwp_reviews_shortcode( $atts );
 		echo $args['after_widget'];
 
 	}
@@ -61,19 +61,19 @@ class grfwpWidgetReviews extends WP_Widget {
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"> <?php _e( 'Title' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"> <?php _e( 'Title', GRFWP_TEXTDOMAIN ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text"<?php if ( isset( $instance['title'] ) ) : ?> value="<?php echo esc_attr( $instance['title'] ); ?>"<?php endif; ?>>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'review' ); ?>"> <?php _e( 'Reviews to display' ); ?></label>
 			<select id="<?php echo $this->get_field_id( 'review' ); ?>" name="<?php echo $this->get_field_name( 'review' ); ?>">
-				<option value="">Show all reviews</option>
+				<option value=""><?php _e( 'Show all reviews', GRFWP_TEXTDOMAIN ); ?></option>
 
 				<?php
 
 				$reviews = new WP_Query( array(
 						'posts_per_page' 	=> -1,
-						'post_type' 		=> 'good-review'
+						'post_type' 		=> GRFWP_REVIEW_POST_TYPE
 					)
 				);
 
