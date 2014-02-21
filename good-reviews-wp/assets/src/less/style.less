@@ -16,15 +16,13 @@
 	margin: 20px 0 80px;
 }
 .gr-content {
-	padding: 20px;
-	background-color: #eee;
 	position: relative;
 }
 .gr-review-rating {
 	font-size: 200%;
 	position: absolute;
-	right: 20px;
-	top: 20px;
+	right: 0;
+	top: 0;
 	width: 15%;
 	min-width: 65px;
 	text-align: right;
@@ -53,13 +51,12 @@
 	opacity: 0.7;
 }
 .gr-review-url {
-	margin-top: 20px;
+	margin-top: 1em;
 	display: inline-block;
 }
 .gr-author {
-	padding-top: 40px;
+	padding-top: 1em;
 	position: relative;
-	background: url('../img/review-triangle.png') no-repeat 85% 0;
 }
 .gr-author-text {
 	width: 75%;
@@ -90,16 +87,37 @@
 /**
  * Widget area
  */
-.widget-area .gr-reviews {
-	font-size: 85%;
-}
-.widget-area .gr-review {
-	margin-top: 0;
-	margin-bottom: 40px;
-}
-.widget-area .gr-review.gr-last-review {
-	margin-bottom: 0;
-}
-.widget-area .gr-review .gr-author {
-	margin-bottom: 0;
+
+.widget-area {
+
+	.gr-reviews {
+		font-size: 85%;
+
+		.gr-review {
+			margin-top: 0;
+			margin-bottom: 40px;
+
+			&.gr-last-review {
+				margin-bottom: 0;
+			}
+
+			&.gr-review-has-rating {
+
+				.gr-review-body {
+					padding-right: 0;
+				}
+
+				.gr-review-rating {
+					position: relative;
+					right: auto;
+					top: auto;
+					text-align: left;
+				}
+			}
+
+			.gr-author {
+				margin-bottom: 0;
+			}
+		}
+	}
 }
