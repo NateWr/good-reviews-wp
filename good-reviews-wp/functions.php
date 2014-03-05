@@ -107,7 +107,6 @@ function grfwp_print_reviews( $args ) {
 					</a>
 					<?php endif; ?>
 
-					<div class="clearfix"></div><!-- @todo remove me -->
 				</div>
 
 				<cite class="gr-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -135,7 +134,6 @@ function grfwp_print_reviews( $args ) {
 					</div>
 					<?php endif; ?>
 
-					<div class="clearfix"></div><!-- @todo replace me -->
 				</cite>
 
 			</blockquote>
