@@ -10,8 +10,19 @@ if ( !class_exists( 'grfwpCustomPostTypes' ) ) {
 class grfwpCustomPostTypes {
 
 	public $post_metadata = null;
-	
+
 	public $current_post = 0;
+
+	// Default metadata values
+	public $metadata_defaults = array(
+		'review_url' 		=> '',
+		'review_date' 		=> '',
+		'reviewer_org' 		=> '',
+		'reviewer_url' 		=> '',
+		'rating' 			=> '',
+		'rating_max' 		=> '',
+		'rating_display'	=> '',
+	);
 
 	public function __construct() {
 
@@ -204,7 +215,7 @@ class grfwpCustomPostTypes {
 		$this->get_post_metadata();
 		$reviewer_org = isset( $this->post_metadata['reviewer_org'] ) ? $this->post_metadata['reviewer_org'] : '';
 		$reviewer_url = isset( $this->post_metadata['reviewer_url'] ) ? $this->post_metadata['reviewer_url'] : '';
-		$reviewer_date = isset( $this->post_metadata['reviewer_date'] ) ? $this->post_metadata['reviewer_date'] : '';
+		$review_date = isset( $this->post_metadata['review_date'] ) ? $this->post_metadata['review_date'] : '';
 		?>
 
 		<p>
@@ -216,8 +227,8 @@ class grfwpCustomPostTypes {
 			<input type="text" name="grfwp[reviewer_url]" id="grfwp[reviewer_url]" value="<?php echo esc_attr( $reviewer_url ); ?>" placeholder="http://">
 		</p>
 		<p>
-			<label for="grfwp[reviewer_date]"><?php echo __( 'Review Date', GRFWP_TEXTDOMAIN ); ?></label><br>
-			<input type="text" name="grfwp[reviewer_date]" id="grfwp[reviewer_date]" value="<?php echo esc_attr( $reviewer_date ); ?>">
+			<label for="grfwp[review_date]"><?php echo __( 'Review Date', GRFWP_TEXTDOMAIN ); ?></label><br>
+			<input type="text" name="grfwp[review_date]" id="grfwp[review_date]" value="<?php echo esc_attr( $review_date ); ?>">
 		</p>
 
 		<?php
@@ -303,8 +314,24 @@ class grfwpCustomPostTypes {
 		}
 		if ( !isset( $this->post_metadata ) || $id != $this->current_post ) {
 			$this->current_post = $id;
-			$this->post_metadata = get_post_meta( $id, 'grfwp', true );
+
+			$this->metadata_defaults = apply_filters( 'grfwp_review_metadata_defaults', $this->metadata_defaults );
+			$this->post_metadata = array_merge( $this->metadata_defaults, get_post_meta( $id, 'grfwp', true ) );
+			$this->post_metadata = apply_filters( 'grfwp_review_metadata', $this->post_metadata );
 		}
+	}
+
+	/**
+	 * Check if post has a rating to display
+	 * @since 0.1
+	 */
+	public function has_rating() {
+
+		if ( $this->post_metadata['rating_display'] && $this->post_metadata['rating'] ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
