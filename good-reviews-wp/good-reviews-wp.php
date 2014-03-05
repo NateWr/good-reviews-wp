@@ -56,10 +56,6 @@ class grfwpInit {
 		require_once( 'custom-post-types.php' );
 		$this->cpts = new grfwpCustomPostTypes();
 
-		// Load settings page
-		require_once( 'settings.php' );
-		$this->settings = new grfwpSettings();
-
 		// Reword the title placeholder text for a review post type
 		add_filter( 'enter_title_here', array( $this, 'rename_review_title' ) );
 
