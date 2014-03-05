@@ -225,6 +225,12 @@ class grfwpInit {
 		if ( GRFWP_REVIEW_POST_TYPE !== $post->post_type || !is_main_query() || !in_the_loop() ) {
 			return $content;
 		}
+		
+		// Don't append to content if just the excerpt is being shown
+		global $more;
+		if ( !$more ) {
+			return $content;
+		}
 
 		// We must disable this filter while we're rendering the menu in order to
 		// prevent it from falling into a recursive loop with each review's
