@@ -129,10 +129,9 @@ function grfwp_print_reviews( $args ) {
 						<?php endif; ?>
 
 					</div>
-
 					<?php if ( $post_meta['img'] ) : ?>
 					<div class="gr-author-img">
-							<img itemprop="image" src="<?php echo esc_attr( $img[0] ); ?>" alt="<?php echo __( 'Photo of ', GRFWP_TEXTDOMAIN ) . esc_attr( $post->post_title ); ?>">
+							<img itemprop="image" src="<?php echo esc_attr( $post_meta['img'][0] ); ?>" alt="<?php echo __( 'Photo of ', GRFWP_TEXTDOMAIN ) . esc_attr( get_the_title() ); ?>">
 					</div>
 					<?php endif; ?>
 
