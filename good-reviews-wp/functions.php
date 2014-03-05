@@ -84,7 +84,7 @@ function grfwp_print_reviews( $args ) {
 
 			?>
 
-			<article <?php echo grfwpInit::format_classes( $css_classes ); ?> itemscope itemtype="http://schema.org/Review">
+			<blockquote <?php echo grfwpInit::format_classes( $css_classes ); ?> itemscope itemtype="http://schema.org/Review">
 				<?php the_schema_item_reviewed( $grfwp_controller->reviewed ); ?>
 
 				<div class="gr-content">
@@ -144,7 +144,7 @@ function grfwp_print_reviews( $args ) {
 					<div class="clearfix"></div>
 				</div>
 
-				<address class="gr-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+				<cite class="gr-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
 					<div class="gr-author-text">
 						<div class="gr-author-name" itemprop="name"><?php echo $post->post_title; ?></div>
@@ -181,10 +181,10 @@ function grfwp_print_reviews( $args ) {
 
 					<?php endif; ?>
 
-					<div class="clearfix"></div>
-				</address>
+					<div class="clearfix"></div><!-- @todo replace me -->
+				</cite>
 
-			</article>
+			</blockquote>
 
 			<?php endforeach; ?>
 
