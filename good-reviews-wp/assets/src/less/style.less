@@ -1,126 +1,86 @@
-/**
- * Variables
- */
+//
+// Variables
+//
+@padding:		1em;
 
-/**
- * Utilities
- */
+//
+// Clearfix (h/t Bootstrap)
+//
 .clearfix {
-	clear: both;
-}
-
-/**
- * General
- */
-.gr-review {
-	margin: 20px 0 80px;
-}
-.gr-content {
-	position: relative;
-}
-.gr-review-rating {
-	font-size: 200%;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 15%;
-	min-width: 65px;
-	text-align: right;
-}
-.gr-review-rating .gr-rating- { /* No displayed rating */
-	display: none;
-}
-.gr-rating-stars {
-	font-size: 100%;
-	width: 110px;
-}
-.gr-review-body {
-	font-size: 130%;
-	font-style: italic;
-
-	em {
-		font-style: normal;
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
 	}
 }
-.gr-review-has-rating .gr-review-body {
-	width: 85%;
-}
-.gr-review-display-stars .gr-review-body {
-	width: auto;
-	padding-right: 120px;
-}
-.gr-review-date {
-	display: block;
-	font-size: 85%;
-	opacity: 0.7;
-}
-.gr-review-url {
-	margin-top: 1em;
-	display: inline-block;
-}
-.gr-author {
-	padding-top: 1em;
-	position: relative;
-}
-.gr-author-text {
-	width: 75%;
-	text-align: right;
-	position: absolute;
-	bottom: 10px;
-}
-.gr-item-no-image .gr-author-text {
-	width: 100%;
-	position: relative;
-	bottom: 0;
-}
-.gr-author-img {
-	float: right;
-	width: 25%;
-}
-.gr-author-img img {
-	width: 100%;
-}
-.gr-author-name,
-.gr-author-affiliation {
-	margin-right: 10px;
-}
-.gr-author-affiliation {
-	font-size: 85%;
-}
 
-/**
- * Widget area
- */
+//
+// Review
+//
+.gr-review {
+	margin: @padding 0 (@padding * 4);
+	font-style: normal;
 
-.widget-area {
+	.gr-content {
+		position: relative;
 
-	.gr-reviews {
-		font-size: 85%;
+		.gr-rating-numbers {
+			font-size: 200%;
+		}
 
-		.gr-review {
-			margin-top: 0;
-			margin-bottom: 40px;
+		.gr-review-body {
+			font-size: 130%;
+			font-style: italic;
 
-			&.gr-last-review {
-				margin-bottom: 0;
+			em {
+				font-style: normal;
 			}
+		}
 
-			&.gr-review-has-rating {
+		.gr-review-date {
+			display: block;
+			font-size: 85%;
+			opacity: 0.7;
+		}
 
-				.gr-review-body {
-					padding-right: 0;
-				}
+		.gr-review-url {
+			display: block;
+			margin-top: @padding;
+		}
+	}
 
-				.gr-review-rating {
-					position: relative;
-					right: auto;
-					top: auto;
-					text-align: left;
+	.gr-author { // <cite>
+		display: block;
+		margin-top: 1em;
+		text-align: right;
+
+		.gr-author-affiliate {
+			font-size: 85%;
+		}
+
+	}
+
+	&.gr-item-has-image {
+
+		.gr-author {
+			.clearfix;
+
+			.gr-author-text {
+				float: left;
+				width: 75%;
+
+				.gr-author-name,
+				.gr-author-affiliation {
+					padding-right: @padding;
 				}
 			}
 
-			.gr-author {
-				margin-bottom: 0;
+			.gr-author-img {
+				float: right;
+				width: 25%;
 			}
 		}
 	}
