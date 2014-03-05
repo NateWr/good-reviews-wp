@@ -43,7 +43,7 @@ function grfwp_print_reviews( $args ) {
 	
 	// Restrict reviews to a certain category
 	if ( isset( $args['category'] ) ) {
-		$q_args['grfwp-category'] = $args['category'];
+		$q_args[GRFWP_REVIEW_CATEGORY] = $args['category'];
 	}
 
 	$q_args = apply_filters( 'grfwp_query_args', $q_args );

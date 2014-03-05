@@ -39,6 +39,7 @@ class grfwpInit {
 		define( 'GRFWP_PLUGIN_URL', untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) );
 		define( 'GRFWP_PLUGIN_FNAME', plugin_basename( __FILE__ ) );
 		define( 'GRFWP_REVIEW_POST_TYPE', 'grfwp-review' );
+		define( 'GRFWP_REVIEW_CATEGORY', 'grfwp-category' );
 
 		// Load template functions
 		require_once( 'functions.php' );

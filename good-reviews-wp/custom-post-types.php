@@ -34,7 +34,7 @@ class grfwpCustomPostTypes {
 		$review_taxonomies = array(
 
 			// Create tour sections (day trips, walking tours, etc)
-			'grfwp-category'	=> array(
+			GRFWP_REVIEW_CATEGORY	=> array(
 				'hierarchical'		=> true,
 				'labels' 		=> array(
 					'name' 			=> _x( 'Review Categories', 'taxonomy general name', GRFWP_TEXTDOMAIN ),
