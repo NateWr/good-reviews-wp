@@ -58,7 +58,10 @@ class grfwpCustomPostTypes {
 					'update_item' 	=> __( 'Update Review Category', GRFWP_TEXTDOMAIN ),
 					'add_new_item' 	=> __( 'Add New Review Category', GRFWP_TEXTDOMAIN ),
 					'new_item_name' => __( 'Review Category', GRFWP_TEXTDOMAIN ),
-				)
+				),
+				'rewrite' => array(
+					'slug' => 'reviews'
+				),
 			)
 		);
 
