@@ -1,6 +1,6 @@
 <?php
 /**
- * Class to handle all custom post type definitions for Tour Packages for WordPress
+ * Class to handle all custom post type definitions for Good Reviews for WordPress
  */
 
 if ( !defined( 'ABSPATH' ) )
@@ -41,10 +41,10 @@ class grfwpCustomPostTypes {
 	 */
 	public function load_cpts() {
 
-		// Define the tour taxonomies
+		// Define the review taxonomies
 		$review_taxonomies = array(
 
-			// Create tour sections (day trips, walking tours, etc)
+			// Create review categories
 			GRFWP_REVIEW_CATEGORY	=> array(
 				'hierarchical'		=> true,
 				'labels' 		=> array(
@@ -74,7 +74,7 @@ class grfwpCustomPostTypes {
 			);
 		}
 
-		// Define the tour custom post type
+		// Define the review custom post type
 		$args = array(
 			'has_archive' => __( 'reviews', GRFWP_TEXTDOMAIN ),
 			'labels' => array(
@@ -316,7 +316,14 @@ class grfwpCustomPostTypes {
 			$this->current_post = $id;
 
 			$this->metadata_defaults = apply_filters( 'grfwp_review_metadata_defaults', $this->metadata_defaults );
-			$this->post_metadata = array_merge( $this->metadata_defaults, get_post_meta( $id, 'grfwp', true ) );
+
+			$this->post_metadata = get_post_meta( $id, 'grfwp', true );
+			if ( $this->post_metadata ) {
+				$this->post_metadata = array_merge( $this->metadata_defaults, $this->post_metadata );
+			} else {
+				$this->post_metadata = $this->metadata_defaults;
+			}
+
 			$this->post_metadata = apply_filters( 'grfwp_review_metadata', $this->post_metadata );
 		}
 	}
