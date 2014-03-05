@@ -39,10 +39,7 @@ function grfwp_print_reviews( $args ) {
 		$grfwp_controller->enqueue_assets();
 
 		// Get information about this site to use in the itemReviewed schema.
-		$reviewed_name = esc_attr( get_bloginfo( 'name' ) );
-		$reviewed_url = esc_attr( get_bloginfo( 'url' ) );
-		$reviewed_description = esc_attr( get_bloginfo( 'description' ) );
-		$reviewed_schema = 'Thing'; // @todo use schema from settings
+		$grfwp_controller->get_reviewed_item();
 
 		// Capture output to return in one string
 		ob_start();
@@ -88,11 +85,7 @@ function grfwp_print_reviews( $args ) {
 			?>
 
 			<article <?php echo grfwpInit::format_classes( $css_classes ); ?> itemscope itemtype="http://schema.org/Review">
-				<div itemprop="itemReviewed" itemscope itemtype="http://schema.org/<?php echo esc_attr( $reviewed_schema ); ?>">
-					<meta itemprop="name" content="<?php echo esc_attr( $reviewed_name ); ?>">
-					<meta itemprop="description" content="<?php echo esc_attr( $reviewed_description ); ?>">
-					<meta itemprop="url" content="<?php echo esc_attr( $reviewed_url ); ?>">
-				</div>
+				<?php the_schema_item_reviewed( $grfwp_controller->reviewed ); ?>
 
 				<div class="gr-content">
 
@@ -209,3 +202,19 @@ function grfwp_print_reviews( $args ) {
 
 }
 } // endif;
+
+/**
+ * Print the schema.org output for the item being reviewed
+ * @since 0.0.1
+ */
+if ( !function_exists( 'the_schema_item_reviewed' ) ) {
+function the_schema_item_reviewed( $item ) {
+	?>
+	<div itemprop="itemReviewed" itemscope itemtype="http://schema.org/<?php echo $item['schema']; ?>">
+		<meta itemprop="name" content="<?php echo $item['name']; ?>">
+		<meta itemprop="description" content="<?php echo $item['description']; ?>">
+		<meta itemprop="url" content="<?php echo $item['url']; ?>">
+	</div>
+	<?php
+}
+} //endif;

@@ -30,6 +30,8 @@ class grfwpInit {
 
 	public $args = array(); // WP_Query arguments when retrieving reviews
 
+	public $reviewed = array(); // Details about the object being reviewed for schema.org markup
+
 	/**
 	 * Initialize the plugin and register hooks
 	 */
@@ -171,7 +173,7 @@ class grfwpInit {
 	 * @since 0.1
 	 */
 	public function get_query_args( $args ) {
-	
+
 		// Set and filter defaults
 		$this->args = array(
 			'posts_per_page' => -1,
@@ -191,6 +193,30 @@ class grfwpInit {
 		}
 
 		$this->args = apply_filters( 'grfwp_query_args', $this->args );
+	}
+
+	/**
+	 * Retrieve schema.org details for the item being reviews
+	 * @note $args is in place for future compatibility, for instance if support
+	 *		for multiple venues is added
+	 * @since 0.1
+	 */
+	public function get_reviewed_item( $args = array() ) {
+
+		// Set and filter defaults
+		// @todo use schema from settings
+		$this->reviewed = array(
+			'name'			=> esc_attr( get_bloginfo( 'name' ) ),
+			'url'			=> esc_attr( get_bloginfo( 'url' ) ),
+			'description'	=> esc_attr( get_bloginfo( 'description' ) ),
+			'schema'		=> 'Thing',
+		);
+
+		$this->reviewed = apply_filters( 'grfwp_reviewed_defaults', $this->reviewed );
+
+		$this->reviewed = array_merge( $this->reviewed, $args );
+
+		$this->reviewed = apply_filters( 'grfwp_reviewed_values', $this->reviewed );
 	}
 
 	/**
