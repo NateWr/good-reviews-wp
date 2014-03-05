@@ -25,37 +25,15 @@ add_shortcode( 'good-reviews', 'grfwp_reviews_shortcode' );
 if ( !function_exists( 'grfwp_print_reviews' ) ) {
 function grfwp_print_reviews( $args ) {
 
-	// WP_Query args
-	$q_args = array(
-		'posts_per_page' => -1,
-		'post_type' => GRFWP_REVIEW_POST_TYPE,
-		'orderby' => 'menu-order',
-		'order' => 'ASC'
-	);
-
-	$q_args = apply_filters( 'grfwp_query_args_defaults', $q_args );
-
-	// Get just one or all reviews
-	if ( isset( $args['review'] ) ) {
-		$q_args['p'] = $args['review'];
-		unset( $q_args['posts_per_page'] );
-	}
-	
-	// Restrict reviews to a certain category
-	if ( isset( $args['category'] ) ) {
-		$q_args[GRFWP_REVIEW_CATEGORY] = $args['category'];
-	}
-
-	$q_args = apply_filters( 'grfwp_query_args', $q_args );
-
-	// Get the query
-	$reviews = new WP_Query( $q_args );
-
 	$output = '';
 
-	if( count( $reviews->posts ) ) :
+	global $grfwp_controller;
+	$grfwp_controller->get_query_args( $args );
+
+	$reviews = new WP_Query( $grfwp_controller->args );
 	
-		global $grfwp_controller;
+	if ( $reviews->have_posts() ) :
+		$reviews->the_post();
 
 		// Enqueue the frontend scripts and styles
 		$grfwp_controller->enqueue_assets();
@@ -64,11 +42,9 @@ function grfwp_print_reviews( $args ) {
 		$reviewed_name = esc_attr( get_bloginfo( 'name' ) );
 		$reviewed_url = esc_attr( get_bloginfo( 'url' ) );
 		$reviewed_description = esc_attr( get_bloginfo( 'description' ) );
-		$reviewed_schema = 'Thing';
+		$reviewed_schema = 'Thing'; // @todo use schema from settings
 
 		// Capture output to return in one string
-		// @note if we print directly here instead of capturing the output, the
-		// menu item will appear above any other content in the page/post.
 		ob_start();
 		?>
 
@@ -222,10 +198,7 @@ function grfwp_print_reviews( $args ) {
 		</div>
 
 	<?php
-
-		// Capture the HTML output
-		$output = ob_get_contents();
-		ob_end_clean();
+		$output = ob_get_clean();
 
 	endif;
 

@@ -28,6 +28,8 @@ if ( ! defined( 'ABSPATH' ) )
 if ( !class_exists( 'grfwpInit' ) ) {
 class grfwpInit {
 
+	public $args = array(); // WP_Query arguments when retrieving reviews
+
 	/**
 	 * Initialize the plugin and register hooks
 	 */
@@ -162,6 +164,33 @@ class grfwpInit {
 		if ( count( $classes ) ) {
 			return ' class="' . join(" ", $classes) . '"';
 		}
+	}
+
+	/**
+	 * Process review query arguments
+	 * @since 0.1
+	 */
+	public function get_query_args( $args ) {
+	
+		// Set and filter defaults
+		$this->args = array(
+			'posts_per_page' => -1,
+			'post_type' => GRFWP_REVIEW_POST_TYPE,
+			'orderby' => 'menu-order',
+			'order' => 'ASC'
+		);
+		$this->args = apply_filters( 'grfwp_query_args_defaults', $this->args );
+
+		if ( isset( $args['review'] ) ) {
+			$this->args['p'] = $args['review'];
+			unset( $this->args['posts_per_page'] );
+		}
+
+		if ( isset( $args['category'] ) ) {
+			$this->args[GRFWP_REVIEW_CATEGORY] = $args['category'];
+		}
+
+		$this->args = apply_filters( 'grfwp_query_args', $this->args );
 	}
 
 	/**
