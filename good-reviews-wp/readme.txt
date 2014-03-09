@@ -25,10 +25,10 @@ This plugin creates a new post type, Good Reviews, which allows you to add revie
 
 == Installation ==
 
-1. Unzip `food-and-drink-menu.zip`
-2. Upload the contents of `food-and-drink-menu.zip` to the `/wp-content/plugins/` directory
+1. Unzip `good-reviews-wp.zip`
+2. Upload the contents of `good-reviews-wp.zip` to the `/wp-content/plugins/` directory
 3. Activate the plugin through the 'Plugins' menu in WordPress
-4. Create Menu Items and add them to Menus from the WordPress admin dashboard. See the /docs/ folder in the plugin for more information.
+4. Create Reviews from the WordPress admin dashboard.
 
 == Frequently Asked Questions ==
 
