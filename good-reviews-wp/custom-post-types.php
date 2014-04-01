@@ -85,7 +85,7 @@ class grfwpCustomPostTypes {
 				'singular_name'      => __( 'Review',                    GRFWP_TEXTDOMAIN ),
 				'menu_name'          => __( 'Reviews',                   GRFWP_TEXTDOMAIN ),
 				'name_admin_bar'     => __( 'Reviews',                   GRFWP_TEXTDOMAIN ),
-				'add_new'            => __( 'Add New',                 GRFWP_TEXTDOMAIN ),
+				'add_new'            => __( 'Add New',                 	 GRFWP_TEXTDOMAIN ),
 				'add_new_item'       => __( 'Add New Review',            GRFWP_TEXTDOMAIN ),
 				'edit_item'          => __( 'Edit Review',               GRFWP_TEXTDOMAIN ),
 				'new_item'           => __( 'New Review',                GRFWP_TEXTDOMAIN ),
@@ -95,7 +95,6 @@ class grfwpCustomPostTypes {
 				'not_found_in_trash' => __( 'No reviews found in trash', GRFWP_TEXTDOMAIN ),
 				'all_items'          => __( 'All Reviews',               GRFWP_TEXTDOMAIN ),
 			),
-			'menu_position' => 25,
 			'public' => true,
 			'rewrite' => array(
 				'slug' => 'review'
