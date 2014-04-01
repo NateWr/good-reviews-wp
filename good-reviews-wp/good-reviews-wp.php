@@ -225,7 +225,7 @@ class grfwpInit {
 		if ( GRFWP_REVIEW_POST_TYPE !== $post->post_type || !is_main_query() || !in_the_loop() ) {
 			return $content;
 		}
-		
+
 		// Don't append to content if just the excerpt is being shown
 		global $more;
 		if ( !$more ) {
