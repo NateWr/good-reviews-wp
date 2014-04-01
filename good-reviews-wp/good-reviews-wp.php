@@ -222,7 +222,7 @@ class grfwpInit {
 	function append_to_content( $content ) {
 		global $post;
 
-		if ( GRFWP_REVIEW_POST_TYPE !== $post->post_type || !is_main_query() || !in_the_loop() ) {
+		if ( !in_the_loop() || !is_main_query() || GRFWP_REVIEW_POST_TYPE !== $post->post_type ) {
 			return $content;
 		}
 
