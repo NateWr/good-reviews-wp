@@ -5,7 +5,13 @@
  */
 if ( !function_exists( 'grfwp_reviews_shortcode' ) ) {
 function grfwp_reviews_shortcode( $atts ) {
-	return grfwp_print_reviews(
+
+	// We must disable the automatic append to content filter while we're
+	// rendering the shortcode to prevent it from displaying twice
+	global $grfwp_controller;
+	remove_action( 'the_content', array( $grfwp_controller, 'append_to_content' ) );
+
+	$output = grfwp_print_reviews(
 		shortcode_atts(
 			array(
 				'review' => null,
@@ -14,6 +20,11 @@ function grfwp_reviews_shortcode( $atts ) {
 			$atts
 		)
 	);
+
+	// Restore the_content filter
+	add_action( 'the_content', array( $grfwp_controller, 'append_to_content' ) );
+
+	return $output;
 }
 add_shortcode( 'good-reviews', 'grfwp_reviews_shortcode' );
 } // endif;
@@ -31,7 +42,7 @@ function grfwp_print_reviews( $args ) {
 	$grfwp_controller->get_query_args( $args );
 
 	$reviews = new WP_Query( $grfwp_controller->args );
-	
+
 	if ( $reviews->have_posts() ) :
 
 		// Enqueue the frontend scripts and styles
@@ -53,7 +64,7 @@ function grfwp_print_reviews( $args ) {
 			$grfwp_controller->cpts->get_post_metadata( get_the_ID() );
 			$post_meta = $grfwp_controller->cpts->post_metadata;
 			$post_meta['img'] = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'grfwp-reviewer' );
-			
+
 			// Store css classes to adjust layout
 			$classes = grfwp_get_review_css_classes( $post_meta );
 			?>
@@ -69,7 +80,7 @@ function grfwp_print_reviews( $args ) {
 						<meta itemprop="worstRating" content="1">
 
 						<?php if ( $post_meta['rating_display'] == 'numbers' ) : ?>
-						<span itemprop="ratingValue"><?php echo esc_attr( $post_meta['rating'] ); ?></span> / 
+						<span itemprop="ratingValue"><?php echo esc_attr( $post_meta['rating'] ); ?></span> /
 						<span itemprop="bestRating"><?php echo esc_attr( $post_meta['rating_max'] ); ?></span>
 
 						<?php elseif ( $post_meta['rating_display'] == 'stars' ) : ?>
@@ -179,12 +190,12 @@ if ( !function_exists( 'grfwp_get_review_css_classes' ) ) {
 function grfwp_get_review_css_classes( $post_meta ) {
 
 	$classes = array( 'gr-review' );
-	
+
 	$classes[] = $post_meta['img'] ? 'gr-item-has-image' : 'gr-item-no-image';
 	$classes[] = ( $post_meta['rating_display'] && $post_meta['rating'] ) ? 'gr-review-has-rating gr-review-display-' . $post_meta['rating_display'] : '';
-	
+
 	$classes = apply_filters( 'grfwp_review_css_classes', $classes );
-	
+
 	return $classes;
 }
 } //endif;
@@ -206,7 +217,7 @@ function grfwp_has_rating() {
  * @since 0.0.1
  */
 if ( !function_exists( 'grfwp_the_star' ) ) {
-function grfwp_the_star( $state ) {	
+function grfwp_the_star( $state ) {
 	if ( $state ) {
 		return apply_filters( 'grfwp_star_html_filled', '<span class="dashicons dashicons-star-filled"></span>' );
 	} else {
