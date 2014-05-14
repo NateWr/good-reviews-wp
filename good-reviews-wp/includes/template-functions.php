@@ -52,6 +52,7 @@ function grfwp_print_reviews( $args ) {
 
 		// Enqueue the frontend stylesheet
 		if ( apply_filters( 'grfwp-load-frontend-assets', true ) ) {
+			wp_enqueue_style( 'dashicons' );
 			wp_enqueue_style( 'gr-reviews' );
 		}
 
