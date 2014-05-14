@@ -52,6 +52,8 @@ class grfwpWidgetReviews extends WP_Widget {
 	 * @since 1.0
 	 */
 	public function form( $instance ) {
+		
+		$review = empty( $instance['review'] ) ? '' : $instance['review'];
 		?>
 
 		<p>
@@ -77,7 +79,7 @@ class grfwpWidgetReviews extends WP_Widget {
 
 				?>
 
-				<option value="<?php echo $reviews->post->ID; ?>"<?php if ( $reviews->post->ID == $instance['review'] ) : ?> selected<?php endif; ?>>
+				<option value="<?php echo $reviews->post->ID; ?>"<?php if ( $reviews->post->ID == $review ) : ?> selected<?php endif; ?>>
 					<?php echo esc_attr( $reviews->post->post_title ); ?>
 				</option>
 
