@@ -2,11 +2,11 @@
 /**
  * Plugin Name: Good Reviews for WordPress
  * Plugin URI: http://themeofthecrop.com
- * Description: Add snippets of positive reviews and link to good reviews of your product or services on other websites. Outputs proper Schema.org markup to ensure the reviews are picked up by Google and other search engines.
+ * Description: Add snippets of positive reviews and link to good reviews of your product or services on other websites. Outputs proper Schema.org markup so the reviews can be picked up by Google and other search engines.
  * Version: 0.0.1
- * Author: Nate Wright
- * Author URI: https://github.com/NateWr
- * License:     GNU General Public License v2.0 or later
+ * Author: Theme of the Crop
+ * Author URI: http://themeofthecrop.com
+ * License: GNU General Public License v2.0 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *
  * Text Domain: grfwpdomain
