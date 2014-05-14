@@ -54,6 +54,10 @@ class grfwpInit {
 
 		// Load template functions
 		require_once( GRFWP_PLUGIN_DIR . '/includes/template-functions.php' );
+
+		// Load code to integrate with other plugins
+		require_once( GRFWP_PLUGIN_DIR . '/includes/integrations.class.php' );
+		new grfwpIntegrations();
 		
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ) );
