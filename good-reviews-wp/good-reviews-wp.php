@@ -98,7 +98,7 @@ class grfwpInit {
 	 * @since 0.0.1
 	 */
 	public function register_assets() {
-		wp_register_style( 'gr-frontend', GRFWP_PLUGIN_URL . '/assets/css/style.css', '1.0' );
+		wp_register_style( 'gr-reviews', GRFWP_PLUGIN_URL . '/assets/css/style.css', '1.0' );
 	}
 
 	/**
@@ -221,14 +221,19 @@ class grfwpInit {
 		if ( !$more ) {
 			return $content;
 		}
+		
+		// Allow overrides to disable the automatic append to content filter
+		if ( !apply_filters( 'grfwp_append_to_content', true ) ) {
+			return $content;
+		}
 
-		// We must disable this filter while we're rendering the menu in order to
-		// prevent it from falling into a recursive loop with each review's
+		// We must disable this filter while we're rendering the reiew in order 
+		// to prevent it from falling into a recursive loop with each review's
 		// content.
 		remove_action( 'the_content', array( $this, 'append_to_content' ) );
 
 		$args = array(
-			'review'	=> $post->ID
+			'review'	=> $post->ID,
 		);
 		$args = apply_filters( 'grfwp_post_content_args', $args );
 
