@@ -45,16 +45,18 @@ class grfwpInit {
 		define( 'GRFWP_REVIEW_POST_TYPE', 'grfwp-review' );
 		define( 'GRFWP_REVIEW_CATEGORY', 'grfwp-category' );
 
-		// Load template functions
-		require_once( 'functions.php' );
-
 		// Initialize the plugin
-		add_action( 'init', array( $this, 'load_config' ) );
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 
 		// Load custom post types
-		require_once( 'custom-post-types.php' );
+		require_once( GRFWP_PLUGIN_DIR . '/includes/CustomPostTypes.class.php' );
 		$this->cpts = new grfwpCustomPostTypes();
+
+		// Load template functions
+		require_once( GRFWP_PLUGIN_DIR . '/includes/template-functions.php' );
+		
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ) );
 
 		// Reword the title placeholder text for a review post type
 		add_filter( 'enter_title_here', array( $this, 'rename_review_title' ) );
@@ -69,8 +71,7 @@ class grfwpInit {
 		register_activation_hook( __FILE__, array( $this, 'rewrite_flush' ) );
 
 		// Register the widget
-		require_once( 'widgets/WidgetReviews.class.php' );
-		add_action( 'widgets_init', create_function( '', 'return register_widget( "grfwpWidgetReviews" );' ) );
+		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 
 	}
 
@@ -85,17 +86,6 @@ class grfwpInit {
 	}
 
 	/**
-	 * Load the plugin's configuration settings and default content
-	 * @since 0.0.1
-	 */
-	public function load_config() {
-
-		// Generate a new thumbnail size for reviewers
-		$size = apply_filters( 'grfwp_thumbnail_size', array( 'x' => '300', 'y' => '300' ) );
-		add_image_size( 'grfwp-reviewer', $size['x'], $size['y'], true );
-	}
-
-	/**
 	 * Load the plugin textdomain for localistion
 	 * @since 0.0.1
 	 */
@@ -104,11 +94,11 @@ class grfwpInit {
 	}
 
 	/**
-	 * Enqueue stylesheets
+	 * Register stylesheet
 	 * @since 0.0.1
 	 */
-	public function enqueue_assets() {
-		wp_enqueue_style( 'gr-frontend', GRFWP_PLUGIN_URL . '/assets/css/style.css', '1.0' );
+	public function register_assets() {
+		wp_register_style( 'gr-frontend', GRFWP_PLUGIN_URL . '/assets/css/style.css', '1.0' );
 	}
 
 	/**
@@ -248,6 +238,15 @@ class grfwpInit {
 		add_action( 'the_content', array( $this, 'append_to_content' ) );
 
 		return $content;
+	}
+
+	/**
+	 * Register the widgets
+	 * @since 0.0.1
+	 */
+	public function register_widgets() {
+		require_once( GRFWP_PLUGIN_DIR . '/includes/WP_Widget.ReviewsWidget.class.php' );
+		register_widget( 'grfwpWidgetReviews' );
 	}
 
 }

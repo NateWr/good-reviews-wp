@@ -36,6 +36,11 @@ add_shortcode( 'good-reviews', 'grfwp_reviews_shortcode' );
 if ( !function_exists( 'grfwp_print_reviews' ) ) {
 function grfwp_print_reviews( $args ) {
 
+	$output = apply_filters( 'grfwp_print_reviews_output', false );
+	if ( $output !== false ) {
+		return $output;
+	}
+	
 	$output = '';
 
 	global $grfwp_controller;
@@ -45,8 +50,10 @@ function grfwp_print_reviews( $args ) {
 
 	if ( $reviews->have_posts() ) :
 
-		// Enqueue the frontend scripts and styles
-		$grfwp_controller->enqueue_assets();
+		// Enqueue the frontend stylesheet
+		if ( apply_filters( 'grfwp-load-frontend-assets', true ) ) {
+			wp_enqueue_style( 'gr-reviews' );
+		}
 
 		// Get information about this site to use in the itemReviewed schema.
 		$grfwp_controller->get_reviewed_item();
@@ -55,7 +62,7 @@ function grfwp_print_reviews( $args ) {
 		ob_start();
 		?>
 
-		<div class="gr-reviews gr-reviews-<?php if ( isset( $args['review'] ) ) : ?>single<?php else : ?>all<?php endif; ?>">
+		<div class="gr-reviews gr-reviews-<?php if ( !empty( $args['review'] ) ) : ?>single<?php else : ?>all<?php endif; ?>">
 
 		<?php
 		while( $reviews->have_posts() ) :
