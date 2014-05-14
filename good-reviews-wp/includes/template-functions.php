@@ -71,7 +71,7 @@ function grfwp_print_reviews( $args ) {
 
 			$grfwp_controller->cpts->get_post_metadata( get_the_ID() );
 			$post_meta = $grfwp_controller->cpts->post_metadata;
-			$post_meta['img'] = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'grfwp-reviewer' );
+			$post_meta['img'] = get_the_post_thumbnail();
 
 			// Store css classes to adjust layout
 			$classes = grfwp_get_review_css_classes( $post_meta );
@@ -147,9 +147,9 @@ function grfwp_print_reviews( $args ) {
 						<?php endif; ?>
 
 					</div>
-					<?php if ( $post_meta['img'] ) : ?>
+					<?php if ( !empty( $post_meta['img'] ) ) : ?>
 					<div class="gr-author-img">
-							<img itemprop="image" src="<?php echo esc_attr( $post_meta['img'][0] ); ?>" alt="<?php echo __( 'Photo of ', GRFWP_TEXTDOMAIN ) . esc_attr( get_the_title() ); ?>">
+							<?php echo $post_meta['img']; ?>
 					</div>
 					<?php endif; ?>
 
