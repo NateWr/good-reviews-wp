@@ -215,12 +215,6 @@ class grfwpInit {
 		if ( !in_the_loop() || !is_main_query() || GRFWP_REVIEW_POST_TYPE !== $post->post_type ) {
 			return $content;
 		}
-
-		// Don't append to content if just the excerpt is being shown
-		global $more;
-		if ( !$more ) {
-			return $content;
-		}
 		
 		// Allow overrides to disable the automatic append to content filter
 		if ( !apply_filters( 'grfwp_append_to_content', true ) ) {

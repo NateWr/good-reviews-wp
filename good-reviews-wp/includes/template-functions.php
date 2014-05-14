@@ -58,6 +58,8 @@ function grfwp_print_reviews( $args ) {
 
 		// Get information about this site to use in the itemReviewed schema.
 		$grfwp_controller->get_reviewed_item();
+		
+		global $more;
 
 		// Capture output to return in one string
 		ob_start();
@@ -72,6 +74,13 @@ function grfwp_print_reviews( $args ) {
 			$grfwp_controller->cpts->get_post_metadata( get_the_ID() );
 			$post_meta = $grfwp_controller->cpts->post_metadata;
 			$post_meta['img'] = get_the_post_thumbnail();
+			
+			// Remove some of the meta if we're in an archive
+			if ( !$more ) {
+				$post_meta['review_date'] = '';
+				$post_meta['review_url'] = '';
+				$post_meta['img'] = '';
+			}
 
 			// Store css classes to adjust layout
 			$classes = grfwp_get_review_css_classes( $post_meta );
@@ -128,6 +137,7 @@ function grfwp_print_reviews( $args ) {
 
 				</div>
 
+				<?php if ( $more ) : ?>
 				<cite class="gr-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
 					<div class="gr-author-text">
 						<span class="gr-author-name" itemprop="name"><?php echo the_title(); ?></span>
@@ -154,6 +164,7 @@ function grfwp_print_reviews( $args ) {
 					<?php endif; ?>
 
 				</cite>
+				<?php endif; ?>
 
 			</blockquote>
 
