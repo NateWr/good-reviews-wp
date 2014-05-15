@@ -73,7 +73,7 @@ function grfwp_print_reviews( $args ) {
 
 			$grfwp_controller->cpts->get_post_metadata( get_the_ID() );
 			$post_meta = $grfwp_controller->cpts->post_metadata;
-			$post_meta['img'] = get_the_post_thumbnail();
+			$post_meta['img'] = get_the_post_thumbnail( get_the_ID(), apply_filters( 'grfwp_the_post_thumbnail_size', 'thumbnail' ) );
 			
 			// Remove some of the meta if we're in an archive
 			if ( !$more ) {
