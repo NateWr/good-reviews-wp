@@ -97,4 +97,5 @@
 .gr-item-has-image img {
 	display: block;
 	width: 100%;
+	height: auto;
 }
