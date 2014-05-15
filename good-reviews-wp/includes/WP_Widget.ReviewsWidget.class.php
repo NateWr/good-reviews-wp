@@ -42,7 +42,15 @@ class grfwpWidgetReviews extends WP_Widget {
 			$title = apply_filters( 'widget_title', $instance['title'] );
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
+		
+		// Always display the full review in widgets, so modify the global
+		// variable...
+		global $more;
+		$more_setting = $more;
+		$more = 1;
 		echo grfwp_reviews_shortcode( $atts );
+		$more = $more_setting; // ... but don't forget to put it back where you found it!
+		
 		echo $args['after_widget'];
 
 	}
