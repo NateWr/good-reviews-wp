@@ -113,7 +113,11 @@ function grfwp_print_reviews( $args ) {
 					<?php endif; ?>
 
 					<div class="gr-review-body" itemprop="reviewBody">
+					<?php if ( !$more ) : ?>
+						<?php echo the_excerpt(); ?>
+					<?php else : ?>
 						<?php echo the_content(); ?>
+					<?php endif; ?>
 					</div>
 
 					<?php
