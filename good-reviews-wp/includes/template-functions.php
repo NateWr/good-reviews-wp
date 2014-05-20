@@ -81,6 +81,8 @@ function grfwp_print_reviews( $args = array() ) {
 				$post_meta['review_url'] = '';
 				$post_meta['img'] = '';
 			}
+			
+			$post_meta = apply_filters( 'grfwp_post_meta', $post_meta );
 
 			// Store css classes to adjust layout
 			$classes = grfwp_get_review_css_classes( $post_meta );
