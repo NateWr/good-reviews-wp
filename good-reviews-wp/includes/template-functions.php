@@ -34,7 +34,7 @@ add_shortcode( 'good-reviews', 'grfwp_reviews_shortcode' );
  * @since 0.1
  */
 if ( !function_exists( 'grfwp_print_reviews' ) ) {
-function grfwp_print_reviews( $args ) {
+function grfwp_print_reviews( $args = array() ) {
 
 	$output = apply_filters( 'grfwp_print_reviews_output', false );
 	if ( $output !== false ) {
