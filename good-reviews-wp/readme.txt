@@ -29,3 +29,8 @@ This plugin creates a new post type, Good Reviews, which allows you to add revie
 2. Upload the contents of `good-reviews-wp.zip` to the `/wp-content/plugins/` directory
 3. Activate the plugin through the 'Plugins' menu in WordPress
 4. Create Reviews from the WordPress admin dashboard.
+
+== Changelog ==
+
+= 0.0.1 (2014-05-26) =
+* Initial release
