@@ -56,7 +56,7 @@ class grfwpInit {
 		require_once( GRFWP_PLUGIN_DIR . '/includes/template-functions.php' );
 
 		// Load code to integrate with other plugins
-		require_once( GRFWP_PLUGIN_DIR . '/includes/integrations.class.php' );
+		require_once( GRFWP_PLUGIN_DIR . '/includes/Integrations.class.php' );
 		new grfwpIntegrations();
 		
 		// Register assets
