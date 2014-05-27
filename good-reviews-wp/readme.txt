@@ -2,10 +2,10 @@
 Contributors: NateWr
 Author URI: https://github.com/NateWr
 Plugin URL: http://themeofthecrop.com
-Requires at Least: 3.8
+Requires at Least: 3.9
 Tested Up To: 3.9.1
 Tags: reviews, testimonials
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 License: GPLv2 or later
 Donate link: http://themeofthecrop.com
 
@@ -31,6 +31,9 @@ This plugin creates a new post type, Good Reviews, which allows you to add revie
 4. Create Reviews from the WordPress admin dashboard.
 
 == Changelog ==
+
+= 0.0.2 (2014-05-27) =
+* Fix letter-case error when loading file
 
 = 0.0.1 (2014-05-26) =
 * Initial release
