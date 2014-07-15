@@ -36,11 +36,11 @@ add_shortcode( 'good-reviews', 'grfwp_reviews_shortcode' );
 if ( !function_exists( 'grfwp_print_reviews' ) ) {
 function grfwp_print_reviews( $args = array() ) {
 
-	$output = apply_filters( 'grfwp_print_reviews_output', false );
+	$output = apply_filters( 'grfwp_print_reviews_output', false, $args );
 	if ( $output !== false ) {
 		return $output;
 	}
-	
+
 	$output = '';
 
 	global $grfwp_controller;
@@ -58,7 +58,7 @@ function grfwp_print_reviews( $args = array() ) {
 
 		// Get information about this site to use in the itemReviewed schema.
 		$grfwp_controller->get_reviewed_item();
-		
+
 		global $more;
 
 		// Capture output to return in one string
@@ -74,14 +74,14 @@ function grfwp_print_reviews( $args = array() ) {
 			$grfwp_controller->cpts->get_post_metadata( get_the_ID() );
 			$post_meta = $grfwp_controller->cpts->post_metadata;
 			$post_meta['img'] = get_the_post_thumbnail( get_the_ID(), apply_filters( 'grfwp_the_post_thumbnail_size', 'thumbnail' ) );
-			
+
 			// Remove some of the meta if we're in an archive
 			if ( !$more ) {
 				$post_meta['review_date'] = '';
 				$post_meta['review_url'] = '';
 				$post_meta['img'] = '';
 			}
-			
+
 			$post_meta = apply_filters( 'grfwp_post_meta', $post_meta );
 
 			// Store css classes to adjust layout
