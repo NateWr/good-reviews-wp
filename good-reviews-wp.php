@@ -58,7 +58,7 @@ class grfwpInit {
 		// Load code to integrate with other plugins
 		require_once( GRFWP_PLUGIN_DIR . '/includes/Integrations.class.php' );
 		new grfwpIntegrations();
-		
+
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ) );
 
@@ -76,6 +76,9 @@ class grfwpInit {
 
 		// Register the widget
 		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
+
+		// Add links to plugin listing
+		add_filter('plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2);
 
 	}
 
@@ -219,13 +222,13 @@ class grfwpInit {
 		if ( !in_the_loop() || !is_main_query() || GRFWP_REVIEW_POST_TYPE !== $post->post_type ) {
 			return $content;
 		}
-		
+
 		// Allow overrides to disable the automatic append to content filter
 		if ( !apply_filters( 'grfwp_append_to_content', true ) ) {
 			return $content;
 		}
 
-		// We must disable this filter while we're rendering the reiew in order 
+		// We must disable this filter while we're rendering the reiew in order
 		// to prevent it from falling into a recursive loop with each review's
 		// content.
 		remove_action( 'the_content', array( $this, 'append_to_content' ) );
@@ -250,6 +253,21 @@ class grfwpInit {
 	public function register_widgets() {
 		require_once( GRFWP_PLUGIN_DIR . '/includes/WP_Widget.ReviewsWidget.class.php' );
 		register_widget( 'grfwpWidgetReviews' );
+	}
+
+	/**
+	 * Add links to the plugin listing on the installed plugins page
+	 * @since 0.0.1
+	 */
+	public function plugin_action_links( $links, $plugin ) {
+
+		if ( $plugin == GRFWP_PLUGIN_FNAME ) {
+
+			$links['help'] = '<a href="' . GRFWP_PLUGIN_URL . '/docs" title="' . __( 'View the help documentation for Business Profile', GRFWP_TEXTDOMAIN ) . '">' . __( 'Help', GRFWP_TEXTDOMAIN ) . '</a>';
+		}
+
+		return $links;
+
 	}
 
 }
