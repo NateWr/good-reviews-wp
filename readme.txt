@@ -5,7 +5,7 @@ Plugin URL: http://themeofthecrop.com
 Requires at Least: 3.9
 Tested Up To: 3.9.1
 Tags: reviews, testimonials, rating, star rating, schema, rich snippets, customer reviews, review widget, testimonial widget
-Stable tag: 0.0.2
+Stable tag: 1.0
 License: GPLv2 or later
 Donate link: http://themeofthecrop.com
 
@@ -15,7 +15,7 @@ Add reviews and testimonials to your website and easily display them in posts, p
 
 Add reviews and testimonials to your website and easily display them in posts, pages or widgets using a search-engine-friendly Schema markup.
 
-This plugin allows you to add reviews to your website. It will output reviews using Schema.org markup to help search engines like Google identify and integrate the reviews with your listing.
+This plugin will output reviews using Schema.org markup to help search engines like Google identify and integrate the reviews with your listing.
 
 * Add 5-star or numbered ratings to reviews
 * Add a photo of the reviewer
@@ -48,7 +48,7 @@ This plugin is packed with hooks so you can extend it as needed. Development tak
 
 == Changelog ==
 
-= 1.0 =
+= 1.0 (2014-07-16) =
 * Initial public release on WordPress.org
 
 = 0.0.2 (2014-05-27) =
