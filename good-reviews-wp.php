@@ -97,7 +97,7 @@ class grfwpInit {
 	 * @since 0.0.1
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( GRFWP_TEXTDOMAIN, false, plugin_basename( dirname( __FILE__ ) ) . "/languages" );
+		load_plugin_textdomain( GRFWP_TEXTDOMAIN, false, plugin_basename( dirname( __FILE__ ) ) . "/languages/" );
 	}
 
 	/**
