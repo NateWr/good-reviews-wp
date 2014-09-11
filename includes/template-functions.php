@@ -14,8 +14,10 @@ function grfwp_reviews_shortcode( $atts ) {
 	$output = grfwp_print_reviews(
 		shortcode_atts(
 			array(
-				'review' => null,
-				'category' => null
+				'review' 	=> null,
+				'category' 	=> null,
+				'random'	=> false,
+				'limit'		=> null
 			),
 			$atts
 		)

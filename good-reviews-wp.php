@@ -176,13 +176,21 @@ class grfwpInit {
 		);
 		$this->args = apply_filters( 'grfwp_query_args_defaults', $this->args );
 
-		if ( isset( $args['review'] ) ) {
+		if ( !empty( $args['review'] ) ) {
 			$this->args['p'] = $args['review'];
 			unset( $this->args['posts_per_page'] );
 		}
 
-		if ( isset( $args['category'] ) ) {
+		if ( !empty( $args['category'] ) ) {
 			$this->args[GRFWP_REVIEW_CATEGORY] = $args['category'];
+		}
+
+		if ( !empty( $args['random'] ) ) {
+			$this->args['orderby'] = 'rand';
+		}
+
+		if ( !empty( $args['limit'] ) ) {
+			$this->args['posts_per_page'] = $args['limit'];
 		}
 
 		$this->args = apply_filters( 'grfwp_query_args', $this->args );
