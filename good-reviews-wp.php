@@ -129,8 +129,13 @@ class grfwpInit {
 	public function admin_order_posts( $query ) {
 
 		if( ( is_admin() && $query->is_admin ) && $query->get( 'post_type' ) == GRFWP_REVIEW_POST_TYPE ) {
-			$query->set( 'orderby', 'menu_order' );
-			$query->set( 'order', 'ASC' );
+			
+			// Don't override an existing orderby setting. This prevents other
+			// orderby options from breaking.
+			if ( !$query->get( 'orderby' ) ) {
+				$query->set( 'orderby', 'menu_order' );
+				$query->set( 'order', 'ASC' );
+			}
 		}
 
 		return $query;
