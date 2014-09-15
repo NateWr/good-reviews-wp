@@ -5,7 +5,7 @@ Plugin URL: http://themeofthecrop.com
 Requires at Least: 3.9
 Tested Up To: 4.0
 Tags: reviews, testimonials, rating, star rating, schema, rich snippets, customer reviews, review widget, testimonial widget
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 Donate link: http://themeofthecrop.com
 
@@ -22,6 +22,8 @@ This plugin will output reviews using Schema.org markup to help search engines l
 * Add a link to the review or the reviewer's organization to increase credibility
 * Schema.org markup for better SEO
 * Add reviews to any page, post or sidebar
+* Show a single review, all reviews or a category of reviews
+* List reviews or cycle through them with a fader
 
 This plugin is part of a group of plugins for restaurants. Check out the [Food and Drink Menu](http://wordpress.org/plugins/food-and-drink-menu/), [Restaurant Reservations](http://wordpress.org/plugins/restaurant-reservations/) and [Business Profile](http://wordpress.org/plugins/business-profile/) plugins as well.
 
@@ -48,6 +50,10 @@ This plugin is packed with hooks so you can extend it as needed. Development tak
 
 == Changelog ==
 
+= 1.1 (2014-09-15) =
+* Add widget/shortcode options to display a category of reviews, randomize the order and limit the number displayed.
+* Add fader display option for cycling through multiple reviews.
+
 = 1.0 (2014-07-16) =
 * Initial public release on WordPress.org
 
@@ -58,6 +64,9 @@ This plugin is packed with hooks so you can extend it as needed. Development tak
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.1 =
+This upgrade adds new features for the shortcode and widget. You can display reviews from a single category, randomize the order and limit how many are displayed. It also adds a fader display mode that will cycle through reviews one by one, fading between each one, instead of listing them all at once.
 
 = 1.0 =
 This is an initial public release on the WordPress.org repository.
