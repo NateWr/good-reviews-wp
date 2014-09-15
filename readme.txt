@@ -5,7 +5,7 @@ Plugin URL: http://themeofthecrop.com
 Requires at Least: 3.9
 Tested Up To: 4.0
 Tags: reviews, testimonials, rating, star rating, schema, rich snippets, customer reviews, review widget, testimonial widget
-Stable tag: 1.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 Donate link: http://themeofthecrop.com
 
@@ -50,6 +50,9 @@ This plugin is packed with hooks so you can extend it as needed. Development tak
 
 == Changelog ==
 
+= 1.1.1 (2014-09-15) =
+* Prevent flash display of all reviews when cycling a group of reviews
+
 = 1.1 (2014-09-15) =
 * Add widget/shortcode options to display a category of reviews, randomize the order and limit the number displayed.
 * Add fader display option for cycling through multiple reviews.
@@ -64,6 +67,9 @@ This plugin is packed with hooks so you can extend it as needed. Development tak
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+This is a minor fix for featured introducted in 1.1: You can display reviews from a single category, randomize the order and limit how many are displayed. It also adds a fader display mode that will cycle through reviews one by one, fading between each one, instead of listing them all at once.
 
 = 1.1 =
 This upgrade adds new features for the shortcode and widget. You can display reviews from a single category, randomize the order and limit how many are displayed. It also adds a fader display mode that will cycle through reviews one by one, fading between each one, instead of listing them all at once.
