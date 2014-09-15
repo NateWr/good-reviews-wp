@@ -50,7 +50,7 @@ class grfwpInit {
 	public function __construct() {
 
 		// Common strings
-		define( 'GRFWP_TEXTDOMAIN', 'grfwpdomain' );
+		define( 'GRFWP_TEXTDOMAIN', 'good-reviews-wp' );
 		define( 'GRFWP_PLUGIN_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 		define( 'GRFWP_PLUGIN_URL', untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) );
 		define( 'GRFWP_PLUGIN_FNAME', plugin_basename( __FILE__ ) );
@@ -111,6 +111,9 @@ class grfwpInit {
 	 */
 	public function load_textdomain() {
 		load_plugin_textdomain( GRFWP_TEXTDOMAIN, false, plugin_basename( dirname( __FILE__ ) ) . "/languages/" );
+
+		// Backwards compatibility
+		load_plugin_textdomain( 'grfwpdomain', false, plugin_basename( dirname( __FILE__ ) ) . "/languages/" );
 	}
 
 	/**
