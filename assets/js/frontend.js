@@ -6,14 +6,14 @@ var grfwpCycleReviews;
 jQuery(document).ready(function ($) {
 
 	// Cycle through reviews
-	var grfwpCycleReviews = {
+	grfwpCycleReviews = {
 
 		init: function( ) {
 
 			var start;
 			for ( var i in grfwp_cycle.ids ) {
 				start = $( '#gr-reviews-' +  grfwp_cycle.ids[i] ).children().first();
-				start.siblings().hide();
+				start.show();
 				this.cycle( start, grfwp_cycle.delay );
 			}
 		},

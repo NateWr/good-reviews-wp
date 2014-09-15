@@ -99,3 +99,8 @@
 	width: 100%;
 	height: auto;
 }
+
+/* Hide cycled reviews on load */
+.gr-reviews-cycle .gr-review {
+	display: none;
+}
