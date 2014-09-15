@@ -17,7 +17,8 @@ function grfwp_reviews_shortcode( $atts ) {
 				'review' 	=> null,
 				'category' 	=> null,
 				'random'	=> false,
-				'limit'		=> null
+				'limit'		=> null,
+				'cycle'		=> false
 			),
 			$atts
 		)
@@ -58,6 +59,23 @@ function grfwp_print_reviews( $args = array() ) {
 			wp_enqueue_style( 'gr-reviews' );
 		}
 
+		// Enqueue the frontend script if required
+		if ( !empty( $grfwp_controller->args['cycle'] ) && $reviews->found_posts > 1 ) {
+
+			$id = count( $grfwp_controller->ids );
+			array_push( $grfwp_controller->ids, $id );
+
+			wp_enqueue_script( 'gr-reviews' );
+			wp_localize_script(
+				'gr-reviews',
+				'grfwp_cycle',
+				array(
+					'ids' => $grfwp_controller->ids,
+					'delay' => apply_filters( 'grfwp_review_cycle_delay', 8000 )
+				)
+			);
+		}
+
 		// Get information about this site to use in the itemReviewed schema.
 		$grfwp_controller->get_reviewed_item();
 
@@ -67,7 +85,7 @@ function grfwp_print_reviews( $args = array() ) {
 		ob_start();
 		?>
 
-		<div class="gr-reviews gr-reviews-<?php if ( !empty( $args['review'] ) ) : ?>single<?php else : ?>all<?php endif; ?>">
+		<div <?php if ( isset( $id ) ) : ?> id="gr-reviews-<?php echo $id; ?>" <?php endif; ?>class="gr-reviews gr-reviews-<?php if ( !empty( $args['review'] ) ) : ?>single<?php else : ?>all<?php endif; ?><?php if ( !empty( $grfwp_controller->args['cycle'] ) ) : ?> gr-reviews-cycle<?php endif; ?>">
 
 		<?php
 		while( $reviews->have_posts() ) :

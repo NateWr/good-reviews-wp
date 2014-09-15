@@ -28,13 +28,20 @@ class grfwpWidgetReviews extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
+		if ( isset( $instance['review'] ) && substr( $instance['review'], 0, 4 ) === 'cat-' ) {
+			$instance['category'] = substr( $instance['review'], 4 );
+			unset( $instance['review'] );
+		}
+
 		// Get the settings
 		$atts = array(
-			'review' => null
+			'review' => null,
+			'category' 	=> null,
+			'random'	=> false,
+			'limit'		=> null,
+			'cycle'		=> false
 		);
-		if( isset( $instance['review'] ) ) {
-			$atts['review'] = $instance['review'];
-		}
+		$atts = array_merge( $atts, $instance );
 
 		// Print the widget's HTML markup
 		echo $args['before_widget'];
@@ -42,7 +49,7 @@ class grfwpWidgetReviews extends WP_Widget {
 			$title = apply_filters( 'widget_title', $instance['title'] );
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
-		
+
 		// Always display the full review in widgets, so modify the global
 		// variable...
 		global $more;
@@ -50,7 +57,7 @@ class grfwpWidgetReviews extends WP_Widget {
 		$more = 1;
 		echo grfwp_reviews_shortcode( $atts );
 		$more = $more_setting; // ... but don't forget to put it back where you found it!
-		
+
 		echo $args['after_widget'];
 
 	}
@@ -60,8 +67,9 @@ class grfwpWidgetReviews extends WP_Widget {
 	 * @since 1.0
 	 */
 	public function form( $instance ) {
-		
+
 		$review = empty( $instance['review'] ) ? '' : $instance['review'];
+		$cycle = empty( $instance['cycle'] ) ? '' : $instance['cycle'];
 		?>
 
 		<p>
@@ -70,10 +78,23 @@ class grfwpWidgetReviews extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'review' ); ?>"> <?php _e( 'Reviews to display' ); ?></label>
-			<select id="<?php echo $this->get_field_id( 'review' ); ?>" name="<?php echo $this->get_field_name( 'review' ); ?>">
+			<select class="widefat" id="<?php echo $this->get_field_id( 'review' ); ?>" name="<?php echo $this->get_field_name( 'review' ); ?>">
 				<option value=""><?php _e( 'Show all reviews', GRFWP_TEXTDOMAIN ); ?></option>
 
 				<?php
+
+				$categories = get_terms(
+					GRFWP_REVIEW_CATEGORY,
+					array(
+						'hide_empty'	=> true
+					)
+				);
+
+				foreach( $categories as $category ) {
+					?>
+					<option value="cat-<?php echo $category->slug; ?>"<?php if ( $review == 'cat-' . $category->slug ) : ?> selected<?php endif; ?>><?php echo __( 'Category: ', GRFWP_TEXTDOMAIN )  . esc_attr( $category->name ); ?></option>
+					<?php
+				}
 
 				$reviews = new WP_Query( array(
 						'posts_per_page' 	=> -1,
@@ -101,6 +122,13 @@ class grfwpWidgetReviews extends WP_Widget {
 				?>
 			</select>
 		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'cycle' ); ?>"> <?php _e( 'Review cycle mode' ); ?></label>
+			<select class="widefat" id="<?php echo $this->get_field_id( 'cycle' ); ?>" name="<?php echo $this->get_field_name( 'cycle' ); ?>">
+				<option value="">List all reviews</option>
+				<option value="fader"<?php if ( $cycle == 'fader' ) : ?> selected<?php endif; ?>>Fade between reviews</option>
+			</select>
+		</p>
 
 		<?php
 	}
@@ -112,12 +140,20 @@ class grfwpWidgetReviews extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 
 		$instance = array();
+		
 		if ( !empty( $new_instance['title'] ) ) {
 			$instance['title'] = strip_tags( $new_instance['title'] );
 		}
+		
 		if ( !empty( $new_instance['review'] ) ) {
-			$instance['review'] = intval( $new_instance['review'] );
+			if ( substr( $new_instance['review'], 0, 4 ) === 'cat-' ) {
+				$instance['review'] = strip_tags( $new_instance['review'] );
+			} else {
+				$instance['review'] = intval( $new_instance['review'] );
+			}
 		}
+
+		$instance['cycle'] = $new_instance['cycle'] == 'fader' ? 'fader' : '';
 
 		return $instance;
 

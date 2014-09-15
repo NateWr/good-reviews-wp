@@ -28,9 +28,21 @@ if ( ! defined( 'ABSPATH' ) )
 if ( !class_exists( 'grfwpInit' ) ) {
 class grfwpInit {
 
-	public $args = array(); // WP_Query arguments when retrieving reviews
+	/**
+	 *  WP_Query arguments when retrieving reviews
+	 */
+	public $args = array();
 
-	public $reviewed = array(); // Details about the object being reviewed for schema.org markup
+	/**
+	 * Details about the object  being reviews for schema.org markup
+	 */
+	public $reviewed = array();
+
+	/**
+	 * IDs of any printed review sets, to distinguish between multiple
+	 * widgest or sets of reviews on a single page
+	 */
+	public $ids = array();
 
 	/**
 	 * Initialize the plugin and register hooks
@@ -106,6 +118,7 @@ class grfwpInit {
 	 */
 	public function register_assets() {
 		wp_register_style( 'gr-reviews', GRFWP_PLUGIN_URL . '/assets/css/style.css', '1.0' );
+		wp_register_script( 'gr-reviews', GRFWP_PLUGIN_URL . '/assets/js/frontend.js', array( 'jquery' ), false, true  );
 	}
 
 	/**
@@ -177,7 +190,8 @@ class grfwpInit {
 			'posts_per_page' => -1,
 			'post_type' => GRFWP_REVIEW_POST_TYPE,
 			'orderby' => 'menu-order',
-			'order' => 'ASC'
+			'order' => 'ASC',
+			'cycle'	=> false
 		);
 		$this->args = apply_filters( 'grfwp_query_args_defaults', $this->args );
 
@@ -196,6 +210,10 @@ class grfwpInit {
 
 		if ( !empty( $args['limit'] ) ) {
 			$this->args['posts_per_page'] = $args['limit'];
+		}
+
+		if ( !empty( $args['cycle'] ) ) {
+			$this->args['cycle'] = $args['cycle'];
 		}
 
 		$this->args = apply_filters( 'grfwp_query_args', $this->args );
