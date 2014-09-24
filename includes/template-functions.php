@@ -59,6 +59,12 @@ function grfwp_print_reviews( $args = array() ) {
 			wp_enqueue_style( 'gr-reviews' );
 		}
 
+		// Set up the classes for styling
+		$classes = array();
+		$classes[] = 'gr-reviews';
+		$classes[] = empty( $args['review'] ) ? 'gr-reviews-all' : 'gr-reviews-single';
+		
+
 		// Enqueue the frontend script if required
 		if ( !empty( $grfwp_controller->args['cycle'] ) && $reviews->found_posts > 1 ) {
 
@@ -74,6 +80,8 @@ function grfwp_print_reviews( $args = array() ) {
 					'delay' => apply_filters( 'grfwp_review_cycle_delay', 8000 )
 				)
 			);
+			
+			$classes[] = 'gr-reviews-cycle';
 		}
 
 		// Get information about this site to use in the itemReviewed schema.
@@ -85,7 +93,7 @@ function grfwp_print_reviews( $args = array() ) {
 		ob_start();
 		?>
 
-		<div <?php if ( isset( $id ) ) : ?> id="gr-reviews-<?php echo $id; ?>" <?php endif; ?>class="gr-reviews gr-reviews-<?php if ( !empty( $args['review'] ) ) : ?>single<?php else : ?>all<?php endif; ?><?php if ( !empty( $grfwp_controller->args['cycle'] ) ) : ?> gr-reviews-cycle<?php endif; ?>">
+		<div <?php if ( isset( $id ) ) : ?> id="gr-reviews-<?php echo $id; ?>"<?php endif; echo $grfwp_controller->format_classes( $classes ); ?>>
 
 		<?php
 		while( $reviews->have_posts() ) :
