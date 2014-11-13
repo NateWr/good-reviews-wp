@@ -63,6 +63,7 @@ function grfwp_print_reviews( $args = array() ) {
 		$classes = array();
 		$classes[] = 'gr-reviews';
 		$classes[] = empty( $args['review'] ) ? 'gr-reviews-all' : 'gr-reviews-single';
+		$classes[] = apply_filters( 'grfwp_microformat_css_class', 'hentry' );
 		
 
 		// Enqueue the frontend script if required
