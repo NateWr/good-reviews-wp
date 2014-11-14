@@ -94,7 +94,7 @@
 	width: 25%;
 }
 				
-.gr-item-has-image img {
+.gr-item-has-image .gr-author-img img {
 	display: block;
 	width: 100%;
 	height: auto;
