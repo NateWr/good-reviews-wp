@@ -3,9 +3,9 @@ Contributors: NateWr
 Author URI: https://github.com/NateWr
 Plugin URL: http://themeofthecrop.com
 Requires at Least: 3.9
-Tested Up To: 4.0
+Tested Up To: 4.0.1
 Tags: reviews, testimonials, rating, star rating, schema, rich snippets, customer reviews, review widget, testimonial widget
-Stable tag: 1.1.1
+Stable tag: 1.2
 License: GPLv2 or later
 Donate link: http://themeofthecrop.com
 
@@ -50,6 +50,11 @@ This plugin is packed with hooks so you can extend it as needed. Development tak
 
 == Changelog ==
 
+= 1.2 (2014-12-03) =
+* Add .hentry class to ensure valid Google Structured Data in all cases
+* Add excerpt shortcode attribute and widget option to replace use of more global
+* Don't automatically append to content in search results to improve theme compatibility
+
 = 1.1.1 (2014-09-15) =
 * Prevent flash display of all reviews when cycling a group of reviews
 
@@ -67,6 +72,9 @@ This plugin is packed with hooks so you can extend it as needed. Development tak
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.2 =
+This release replaces modifies when and how review excerpts are used in place of full reviews. This was done to comply with upcoming changes in WP 4.1. In almost all cases, this will not effect your site. But if it does, there is now an "excerpt" widget option and shortcode attribute if you need it.
 
 = 1.1.1 =
 This is a minor fix for featured introducted in 1.1: You can display reviews from a single category, randomize the order and limit how many are displayed. It also adds a fader display mode that will cycle through reviews one by one, fading between each one, instead of listing them all at once.
