@@ -199,11 +199,12 @@ class grfwpInit {
 
 		// Set and filter defaults
 		$this->args = array(
-			'posts_per_page' => -1,
+			'posts_per_page' => 100, // sane upper limit
 			'post_type' => GRFWP_REVIEW_POST_TYPE,
 			'orderby' => 'menu-order',
 			'order' => 'ASC',
-			'cycle'	=> false
+			'cycle'	=> false,
+			'excerpt'	=> false,
 		);
 		$this->args = apply_filters( 'grfwp_query_args_defaults', $this->args );
 
@@ -226,6 +227,10 @@ class grfwpInit {
 
 		if ( !empty( $args['cycle'] ) ) {
 			$this->args['cycle'] = $args['cycle'];
+		}
+
+		if ( !empty( $args['excerpt'] ) ) {
+			$this->args['excerpt'] = $args['excerpt'];
 		}
 
 		$this->args = apply_filters( 'grfwp_query_args', $this->args );

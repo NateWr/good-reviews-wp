@@ -63,7 +63,7 @@ function grfwp_print_reviews( $args = array() ) {
 		// Set up the classes for styling
 		$classes = array();
 		$classes[] = 'gr-reviews';
-		$classes[] = empty( $args['review'] ) ? 'gr-reviews-all' : 'gr-reviews-single';
+		$classes[] = empty( $grfwp_controller->args['p'] ) ? 'gr-reviews-all' : 'gr-reviews-single';
 		$classes[] = apply_filters( 'grfwp_microformat_css_class', 'hentry' );
 		
 
@@ -104,7 +104,7 @@ function grfwp_print_reviews( $args = array() ) {
 			$post_meta['img'] = get_the_post_thumbnail( get_the_ID(), apply_filters( 'grfwp_the_post_thumbnail_size', 'thumbnail' ) );
 
 			// Set 
-			if ( !empty( $args['excerpt'] ) ) {
+			if ( !empty( $grfwp_controller->args['excerpt'] ) ) {
 				$post_meta['review_date'] = '';
 				$post_meta['review_url'] = '';
 			}
@@ -142,7 +142,7 @@ function grfwp_print_reviews( $args = array() ) {
 					<?php endif; ?>
 
 					<div class="gr-review-body" itemprop="reviewBody">
-					<?php if ( !empty( $args['excerpt'] ) ) : ?>
+					<?php if ( !empty( $grfwp_controller->args['excerpt'] ) ) : ?>
 						<?php echo the_excerpt(); ?>
 					<?php else : ?>
 						<?php echo the_content(); ?>
@@ -150,7 +150,7 @@ function grfwp_print_reviews( $args = array() ) {
 					</div>
 
 					<?php
-					if ( empty( $args['excerpt'] ) ) :
+					if ( empty( $grfwp_controller->args['excerpt'] ) ) :
 						/**
 						 * @todo <time> won't validate unless I have a properly
 						 * formatted date. Implement a date-picker so I can control
