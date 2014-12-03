@@ -39,7 +39,8 @@ class grfwpWidgetReviews extends WP_Widget {
 			'category' 	=> null,
 			'random'	=> false,
 			'limit'		=> null,
-			'cycle'		=> false
+			'cycle'		=> false,
+			'excerpt'	=> false,
 		);
 		$atts = array_merge( $atts, $instance );
 
@@ -70,6 +71,7 @@ class grfwpWidgetReviews extends WP_Widget {
 
 		$review = empty( $instance['review'] ) ? '' : $instance['review'];
 		$cycle = empty( $instance['cycle'] ) ? '' : $instance['cycle'];
+		$excerpt = empty( $instance['excerpt'] ) ? '' : $instance['excerpt'];
 		?>
 
 		<p>
@@ -129,6 +131,10 @@ class grfwpWidgetReviews extends WP_Widget {
 				<option value="fader"<?php if ( $cycle == 'fader' ) : ?> selected<?php endif; ?>>Fade between reviews</option>
 			</select>
 		</p>
+		<p>
+			<input type="checkbox" id="<?php echo $this->get_field_id( 'excerpt' ); ?>" name="<?php echo $this->get_field_name( 'excerpt' ); ?>" value="1" <?php checked( $excerpt, 1 ); ?>>
+			<label for="<?php echo $this->get_field_id( 'excerpt' ); ?>"><?php _e( 'Show excerpt only', GRFWP_REVIEW_POST_TYPE ); ?></label>
+		</p>
 
 		<?php
 	}
@@ -154,6 +160,7 @@ class grfwpWidgetReviews extends WP_Widget {
 		}
 
 		$instance['cycle'] = $new_instance['cycle'] == 'fader' ? 'fader' : '';
+		$instance['excerpt'] = $new_instance['excerpt'] == 1 ? true : false;
 
 		return $instance;
 

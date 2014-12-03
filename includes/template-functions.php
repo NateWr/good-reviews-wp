@@ -18,7 +18,8 @@ function grfwp_reviews_shortcode( $atts ) {
 				'category' 	=> null,
 				'random'	=> false,
 				'limit'		=> null,
-				'cycle'		=> false
+				'cycle'		=> false,
+				'excerpt'	=> false,
 			),
 			$atts
 		)
@@ -88,8 +89,6 @@ function grfwp_print_reviews( $args = array() ) {
 		// Get information about this site to use in the itemReviewed schema.
 		$grfwp_controller->get_reviewed_item();
 
-		global $more;
-
 		// Capture output to return in one string
 		ob_start();
 		?>
@@ -104,11 +103,10 @@ function grfwp_print_reviews( $args = array() ) {
 			$post_meta = $grfwp_controller->cpts->post_metadata;
 			$post_meta['img'] = get_the_post_thumbnail( get_the_ID(), apply_filters( 'grfwp_the_post_thumbnail_size', 'thumbnail' ) );
 
-			// Remove some of the meta if we're in an archive
-			if ( !$more ) {
+			// Set 
+			if ( !empty( $args['excerpt'] ) ) {
 				$post_meta['review_date'] = '';
 				$post_meta['review_url'] = '';
-				$post_meta['img'] = '';
 			}
 
 			$post_meta = apply_filters( 'grfwp_post_meta', $post_meta );
@@ -144,7 +142,7 @@ function grfwp_print_reviews( $args = array() ) {
 					<?php endif; ?>
 
 					<div class="gr-review-body" itemprop="reviewBody">
-					<?php if ( !$more ) : ?>
+					<?php if ( !empty( $args['excerpt'] ) ) : ?>
 						<?php echo the_excerpt(); ?>
 					<?php else : ?>
 						<?php echo the_content(); ?>
@@ -152,27 +150,34 @@ function grfwp_print_reviews( $args = array() ) {
 					</div>
 
 					<?php
-					/**
-					 * @todo <time> won't validate unless I have a properly
-					 * formatted date. Implement a date-picker so I can control
-					 * the date's input value and use the <time> element here.
-					 * I'll probably also want to add some options for how the
-					 * date is then displayed.
-					 */
-					if ( $post_meta['review_date'] ) :
-					?>
-					<span class="gr-review-date" itemprop="datePublished"><?php echo $post_meta['review_date']; ?></span>
-					<?php endif; ?>
+					if ( empty( $args['excerpt'] ) ) :
+						/**
+						 * @todo <time> won't validate unless I have a properly
+						 * formatted date. Implement a date-picker so I can control
+						 * the date's input value and use the <time> element here.
+						 * I'll probably also want to add some options for how the
+						 * date is then displayed.
+						 */
+						if ( $post_meta['review_date'] ) :
+						?>
+						<span class="gr-review-date" itemprop="datePublished"><?php echo $post_meta['review_date']; ?></span>
+						<?php endif; ?>
 
-					<?php if ( $post_meta['review_url'] ) : ?>
-					<a class="gr-review-url" itemprop="url" href="<?php echo esc_attr( $post_meta['review_url'] ); ?>">
-						<?php echo __( 'Read More', GRFWP_TEXTDOMAIN); ?>
-					</a>
+						<?php if ( $post_meta['review_url'] ) : ?>
+						<a class="gr-review-url" itemprop="url" href="<?php echo esc_attr( $post_meta['review_url'] ); ?>">
+							<?php echo __( 'Read More', GRFWP_TEXTDOMAIN); ?>
+						</a>
+						<?php endif;
+
+					else :
+					?>
+						<a class="gr-review-url" itemprop="sameAs" href="<?php echo get_permalink(); ?>">
+							<?php echo __( 'Read More', GRFWP_TEXTDOMAIN); ?>
+						</a>
 					<?php endif; ?>
 
 				</div>
 
-				<?php if ( $more ) : ?>
 				<cite class="gr-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
 					<div class="gr-author-text">
 						<span class="gr-author-name" itemprop="name"><?php echo the_title(); ?></span>
@@ -199,7 +204,6 @@ function grfwp_print_reviews( $args = array() ) {
 					<?php endif; ?>
 
 				</cite>
-				<?php endif; ?>
 
 			</blockquote>
 
