@@ -3,7 +3,7 @@ Contributors: NateWr
 Author URI: https://github.com/NateWr
 Plugin URL: http://themeofthecrop.com
 Requires at Least: 3.9
-Tested Up To: 4.0.1
+Tested Up To: 4.1
 Tags: reviews, testimonials, rating, star rating, schema, rich snippets, customer reviews, review widget, testimonial widget
 Stable tag: 1.2
 License: GPLv2 or later
