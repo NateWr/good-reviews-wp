@@ -134,7 +134,7 @@ function grfwp_print_reviews( $args = array() ) {
 						<meta itemprop="bestRating" content="<?php echo esc_attr( $post_meta['rating_max'] ); ?>">
 						<span class="screen-reader-text"><?php echo esc_attr( $post_meta['rating'] ) . '/' . esc_attr( $post_meta['rating_max'] ); ?></span>
 						<?php echo str_repeat( grfwp_the_star( true ), $post_meta['rating'] ); ?>
-						<?php echo str_repeat( grfwp_the_star( false ), ( $post_meta['rating_max'] - $post_meta['rating'] ) ); ?>
+						<?php echo str_repeat( grfwp_the_star( false ), max( ( $post_meta['rating_max'] - $post_meta['rating'] ), 0 ) ); ?>
 
 						<?php endif; ?>
 					</div>
