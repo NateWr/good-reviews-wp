@@ -65,7 +65,7 @@ function grfwp_print_reviews( $args = array() ) {
 		$classes[] = 'gr-reviews';
 		$classes[] = empty( $grfwp_controller->args['p'] ) ? 'gr-reviews-all' : 'gr-reviews-single';
 		$classes[] = apply_filters( 'grfwp_microformat_css_class', 'hentry' );
-		
+
 
 		// Enqueue the frontend script if required
 		if ( !empty( $grfwp_controller->args['cycle'] ) && $reviews->found_posts > 1 ) {
@@ -82,7 +82,7 @@ function grfwp_print_reviews( $args = array() ) {
 					'delay' => apply_filters( 'grfwp_review_cycle_delay', 8000 )
 				)
 			);
-			
+
 			$classes[] = 'gr-reviews-cycle';
 		}
 
@@ -103,7 +103,7 @@ function grfwp_print_reviews( $args = array() ) {
 			$post_meta = $grfwp_controller->cpts->post_metadata;
 			$post_meta['img'] = get_the_post_thumbnail( get_the_ID(), apply_filters( 'grfwp_the_post_thumbnail_size', 'thumbnail' ) );
 
-			// Set 
+			// Set
 			if ( !empty( $grfwp_controller->args['excerpt'] ) ) {
 				$post_meta['review_date'] = '';
 				$post_meta['review_url'] = '';
