@@ -154,7 +154,7 @@ class grfwpInit {
 	public function admin_order_posts( $query ) {
 
 		if( ( is_admin() && $query->is_admin ) && $query->get( 'post_type' ) == GRFWP_REVIEW_POST_TYPE ) {
-			
+
 			// Don't override an existing orderby setting. This prevents other
 			// orderby options from breaking.
 			if ( !$query->get( 'orderby' ) ) {
@@ -201,7 +201,7 @@ class grfwpInit {
 		$this->args = array(
 			'posts_per_page' => 100, // sane upper limit
 			'post_type' => GRFWP_REVIEW_POST_TYPE,
-			'orderby' => 'menu-order',
+			'orderby' => 'menu_order',
 			'order' => 'ASC',
 			'cycle'	=> false,
 			'excerpt'	=> false,
