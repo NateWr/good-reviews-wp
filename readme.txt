@@ -3,9 +3,9 @@ Contributors: NateWr
 Author URI: https://github.com/NateWr
 Plugin URL: http://themeofthecrop.com
 Requires at Least: 3.9
-Tested Up To: 4.2
+Tested Up To: 4.3
 Tags: reviews, testimonials, rating, star rating, schema, rich snippets, customer reviews, review widget, testimonial widget
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPLv2 or later
 Donate link: http://themeofthecrop.com
 
@@ -25,6 +25,8 @@ This plugin will output reviews using Schema.org markup to help search engines l
 * Show a single review, all reviews or a category of reviews
 * List reviews or cycle through them with a fader
 
+**Sorry, it does not allow users to submit reviews.**
+
 This plugin is part of a group of plugins for restaurants. Check out the [Food and Drink Menu](http://wordpress.org/plugins/food-and-drink-menu/), [Restaurant Reservations](http://wordpress.org/plugins/restaurant-reservations/) and [Business Profile](http://wordpress.org/plugins/business-profile/) plugins as well.
 
 = How to use =
@@ -42,6 +44,24 @@ This plugin is packed with hooks so you can extend it as needed. Development tak
 3. Activate the plugin through the 'Plugins' menu in WordPress
 4. Create Reviews from the WordPress admin dashboard.
 
+== Frequently Asked Questions ==
+
+= Is there a shortcode to print all of my reviews? =
+
+Yes, use the `[good-reviews]` shortcode. Consult the help documentation in the /docs/ folder for details on the shortcode attributes available.
+
+= Can users submit reviews with this plugin? =
+
+No, this plugin only allows you to display reviews you've entered yourself.
+
+= Can I customize the output of the reviews? =
+
+Yes, but in order to do this you'll need to be able to write PHP, HTML and CSS code. The `grfwp_print_reviews_output` filter will allow you to hook in before reviews are printed and output your own markup. You'll find it [here](https://github.com/NateWr/good-reviews-wp/blob/master/includes/template-functions.php#L43).
+
+= Is there a template function I can use to print reviews? =
+
+Yes, check out the [grfwp_print_reviews()](https://github.com/NateWr/good-reviews-wp/blob/master/includes/template-functions.php#L41) function.
+
 == Screenshots ==
 
 1. Display any or all of your reviews on a page with the [good-reviews] shortcode.
@@ -49,6 +69,13 @@ This plugin is packed with hooks so you can extend it as needed. Development tak
 3. A widget is included to display one or all of the reviews in any sidebar.
 
 == Changelog ==
+
+= 1.2.1 (2015-09-09) =
+* Add: Hebrew translation
+* Update: textdomain usage to support upcoming plugin language packs
+* Fix: reviews aren't ordered by Menu Order on the frontend
+* Fix: negative rating numbers cause problems with start rating format
+* Fix #2: Strict Standards error can appear if error reporting is high
 
 = 1.2 (2014-12-03) =
 * Add .hentry class to ensure valid Google Structured Data in all cases
@@ -72,6 +99,9 @@ This plugin is packed with hooks so you can extend it as needed. Development tak
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.2.1 =
+This release fixes some minor bugs, including one related to the ordering of reviews. You might want to check the order of your reviews after updating. It also adds a Hebrew translation and prepares for the upcoming language packs feature.
 
 = 1.2 =
 This release replaces modifies when and how review excerpts are used in place of full reviews. This was done to comply with upcoming changes in WP 4.1. In almost all cases, this will not effect your site. But if it does, there is now an "excerpt" widget option and shortcode attribute if you need it.
