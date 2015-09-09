@@ -29,6 +29,11 @@ if ( !class_exists( 'grfwpInit' ) ) {
 class grfwpInit {
 
 	/**
+	 * The single instance of this class
+	 */
+	private static $instance;
+
+	/**
 	 *  WP_Query arguments when retrieving reviews
 	 */
 	public $args = array();
@@ -45,9 +50,26 @@ class grfwpInit {
 	public $ids = array();
 
 	/**
+	 * Create or retrieve the single instance of the class
+	 *
+	 * @since 0.1
+	 */
+	public static function instance() {
+
+		if ( !isset( self::$instance ) ) {
+
+			self::$instance = new grfwpInit();
+
+			self::$instance->init();
+		}
+
+		return self::$instance;
+	}
+
+	/**
 	 * Initialize the plugin and register hooks
 	 */
-	public function __construct() {
+	public function init() {
 
 		// Common strings
 		define( 'GRFWP_TEXTDOMAIN', 'good-reviews-wp' );
@@ -83,9 +105,6 @@ class grfwpInit {
 
 		// Transform review $content variable to output review
 		add_filter( 'the_content', array( $this, 'append_to_content' ) );
-
-		// Flush the rewrite rules for the custom post types
-		register_activation_hook( __FILE__, array( $this, 'rewrite_flush' ) );
 
 		// Register the widget
 		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
@@ -172,7 +191,7 @@ class grfwpInit {
 	 * Used to sanitize all values in an array
 	 * @since 0.1
 	 */
-	public function array_filter_recursive( $arr, $callback ) {
+	public static function array_filter_recursive( $arr, $callback ) {
 		foreach ( $arr as &$value ) {
 			if ( is_array( $value ) ) {
 				$value = grfwpInit::array_filter_recursive( $value, $callback );
@@ -321,4 +340,8 @@ class grfwpInit {
 }
 } // endif;
 
-$grfwp_controller = new grfwpInit();
+// Global instance
+$grfwp_controller = grfwpInit::instance();
+
+// Flush the rewrite rules for the custom post types
+register_activation_hook( __FILE__, array( $grfwp_controller, 'rewrite_flush' ) );
