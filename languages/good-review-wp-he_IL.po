@@ -17,28 +17,28 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #
-# $links['help'] = '<a href="' . GRFWP_PLUGIN_URL . '/docs" title="' . __( 'View the help documentation for Business Profile', GRFWP_TEXTDOMAIN ) . '">' . __( 'Help', GRFWP_TEXTDOMAIN ) . '</a>';
+# $links['help'] = '<a href="' . GRFWP_PLUGIN_URL . '/docs" title="' . __( 'View the help documentation for Business Profile', 'good-reviews-wp' ) . '">' . __( 'Help', 'good-reviews-wp' ) . '</a>';
 # }
 # wpml-name: 6a26f548831e6a8c26bfbbd9f6ec61e0
 msgid "Help"
 msgstr "עזרה"
 
 #
-# $links['help'] = '<a href="' . GRFWP_PLUGIN_URL . '/docs" title="' . __( 'View the help documentation for Business Profile', GRFWP_TEXTDOMAIN ) . '">' . __( 'Help', GRFWP_TEXTDOMAIN ) . '</a>';
+# $links['help'] = '<a href="' . GRFWP_PLUGIN_URL . '/docs" title="' . __( 'View the help documentation for Business Profile', 'good-reviews-wp' ) . '">' . __( 'Help', 'good-reviews-wp' ) . '</a>';
 # }
 # wpml-name: df86f6989ce973abc386fef512ef93cc
 msgid "View the help documentation for Business Profile"
 msgstr ""
 
 # if  ( $screen->post_type == GRFWP_REVIEW_POST_TYPE ) {
-# $title = __( 'Enter reviewer here', GRFWP_TEXTDOMAIN );
+# $title = __( 'Enter reviewer here', 'good-reviews-wp' );
 # }
 # wpml-name: 39d08c5fd487cec219790402c0cdabb9
 msgid "Enter reviewer here"
 msgstr "הזן כאן את הסוקר"
 
 # <a class="gr-review-url" itemprop="sameAs" href="<?php echo get_permalink(); ?>">
-# <?php echo __( 'Read More', GRFWP_TEXTDOMAIN); ?>
+# <?php echo __( 'Read More', 'good-reviews-wp'); ?>
 # </a>
 # wpml-name: decbe415d8accca7c2c16d48a79ee934
 msgid "Read More"
@@ -52,281 +52,281 @@ msgid "Show excerpt only"
 msgstr "הצג מובאה בלבד"
 
 # <select class="widefat" id="<?php echo $this->get_field_id( 'review' ); ?>" name="<?php echo $this->get_field_name( 'review' ); ?>">
-# <option value=""><?php _e( 'Show all reviews', GRFWP_TEXTDOMAIN ); ?></option>
+# <option value=""><?php _e( 'Show all reviews', 'good-reviews-wp' ); ?></option>
 #
 # wpml-name: 5767e0674cc90a535683f4963dc05da0
 msgid "Show all reviews"
 msgstr "הצג את כל הסקירות"
 
 # <p>
-# <label for="<?php echo $this->get_field_id( 'title' ); ?>"> <?php _e( 'Title', GRFWP_TEXTDOMAIN ); ?></label>
+# <label for="<?php echo $this->get_field_id( 'title' ); ?>"> <?php _e( 'Title', 'good-reviews-wp' ); ?></label>
 # <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text"<?php if ( isset( $instance['title'] ) ) : ?> value="<?php echo esc_attr( $instance['title'] ); ?>"<?php endif; ?>>
 # wpml-name: b78a3223503896721cca1303f776159b
 msgid "Title"
 msgstr "כותרת"
 
 # ?>
-# <option value="cat-<?php echo $category->slug; ?>"<?php if ( $review == 'cat-' . $category->slug ) : ?> selected<?php endif; ?>><?php echo __( 'Category: ', GRFWP_TEXTDOMAIN )  . esc_attr( $category->name ); ?></option>
+# <option value="cat-<?php echo $category->slug; ?>"<?php if ( $review == 'cat-' . $category->slug ) : ?> selected<?php endif; ?>><?php echo __( 'Category: ', 'good-reviews-wp' )  . esc_attr( $category->name ); ?></option>
 # <?php
 # wpml-name: cd10ba27bfc09acaa0262499736d9e27
 msgid "Category: "
 msgstr "קטגוריה: "
 
-# __( 'Good Reviews', GRFWP_TEXTDOMAIN ),
-# array( 'description' => __( 'Display one or all of your reviews.', GRFWP_TEXTDOMAIN ), )
+# __( 'Good Reviews', 'good-reviews-wp' ),
+# array( 'description' => __( 'Display one or all of your reviews.', 'good-reviews-wp' ), )
 # );
 # wpml-name: d459087e7180f921908f940211fb3c4c
 msgid "Display one or all of your reviews."
 msgstr "הצג את כל הסקירות שלך או אחת מהן."
 
 # 'grfwp_widget_reviews',
-# __( 'Good Reviews', GRFWP_TEXTDOMAIN ),
-# array( 'description' => __( 'Display one or all of your reviews.', GRFWP_TEXTDOMAIN ), )
+# __( 'Good Reviews', 'good-reviews-wp' ),
+# array( 'description' => __( 'Display one or all of your reviews.', 'good-reviews-wp' ), )
 # wpml-name: d7bec38fec405c23a91a2ceb026b385f
 msgid "Good Reviews"
 msgstr "Good Reviews"
 
 # 'labels' 		=> array(
-# 'name' 			=> _x( 'Review Categories', 'taxonomy general name', GRFWP_TEXTDOMAIN ),
-# 'singular_name' => _x( 'Review Category', 'taxonomy singular name', GRFWP_TEXTDOMAIN ),
+# 'name' 			=> _x( 'Review Categories', 'taxonomy general name', 'good-reviews-wp' ),
+# 'singular_name' => _x( 'Review Category', 'taxonomy singular name', 'good-reviews-wp' ),
 # wpml-name: taxonomy general name: Review Categories
 msgid "Review Categories"
 msgstr "קטגוריות סקירה"
 
 # <code>[good-reviews review=<?php echo $post->ID; ?>]</code>
-# <p><?php echo __( 'To show all reviews in a list, use the snippet below.', GRFWP_TEXTDOMAIN ); ?></p>
+# <p><?php echo __( 'To show all reviews in a list, use the snippet below.', 'good-reviews-wp' ); ?></p>
 # <code>[good-reviews]</code>
 # wpml-name: 7571a1305f5b8690919d724c7287f127
 msgid "To show all reviews in a list, use the snippet below."
 msgstr "כדי להציג את כל הסקירות ברשימה, השתמש בקטע שלהלן."
 
 #
-# <p><?php echo __( 'Copy and paste the snippet below into any post, page or text widget in order to display this review.', GRFWP_TEXTDOMAIN ); ?></p>
+# <p><?php echo __( 'Copy and paste the snippet below into any post, page or text widget in order to display this review.', 'good-reviews-wp' ); ?></p>
 # <code>[good-reviews review=<?php echo $post->ID; ?>]</code>
 # wpml-name: d4e41e175a6168ea7caa52e822b8291c
 msgid "Copy and paste the snippet below into any post, page or text widget in order to display this review."
 msgstr "העתק והדבק את הקטע שלהלן אל כל פוסט, עמוד או וידג'ט טקסט כדי להציג את הסקירה הזו."
 
 #
-# <p><?php echo __( 'Once this review is published, look here to find the shortcode you will use to display this review in any post, page or text widget.', GRFWP_TEXTDOMAIN ); ?></p>
+# <p><?php echo __( 'Once this review is published, look here to find the shortcode you will use to display this review in any post, page or text widget.', 'good-reviews-wp' ); ?></p>
 #
 # wpml-name: 10b8e62069983248a3f04bce7e95978f
 msgid "Once this review is published, look here to find the shortcode you will use to display this review in any post, page or text widget."
 msgstr "עם פרסום הסקירה, ניתן למצוא כאן את קיצור הקוד שישמש להצגת הסקירה הזו בכל פוסט, עמוד או וידג'ט טקסט."
 
 # <input type="radio" name="grfwp[rating_display]" id="grfwp[rating_display][stars]" value="stars"<?php if( $rating_display == 'stars' ) : ?> checked="checked"<?php endif; ?>>
-# <label for="grfwp[rating_display][stars]"><?php echo __( 'Show rating as stars', GRFWP_TEXTDOMAIN ); ?></label>
+# <label for="grfwp[rating_display][stars]"><?php echo __( 'Show rating as stars', 'good-reviews-wp' ); ?></label>
 # </p>
 # wpml-name: 576ebe07a250954428a132f9ac5456cf
 msgid "Show rating as stars"
 msgstr "הצג דירוג כוכבים"
 
 # <input type="radio" name="grfwp[rating_display]" id="grfwp[rating_display][numbers]" value="numbers"<?php if( $rating_display == 'numbers' ) : ?> checked="checked"<?php endif; ?>>
-# <label for="grfwp[rating_display][numbers]"><?php echo __( 'Show rating as numbers (9/10)', GRFWP_TEXTDOMAIN ); ?></label>
+# <label for="grfwp[rating_display][numbers]"><?php echo __( 'Show rating as numbers (9/10)', 'good-reviews-wp' ); ?></label>
 # </p>
 # wpml-name: 8705e0abe73f7be4c78fcb53301927f7
 msgid "Show rating as numbers (9/10)"
 msgstr "הצג דירוג כמספרים (9/10)"
 
 # <input type="radio" name="grfwp[rating_display]" id="grfwp[rating_display]" value=""<?php if( !$rating_display ) : ?> checked="checked"<?php endif; ?>>
-# <label for="grfwp[rating_display]"><?php echo __( 'Don\'t show the rating', GRFWP_TEXTDOMAIN ); ?></label>
+# <label for="grfwp[rating_display]"><?php echo __( 'Don\'t show the rating', 'good-reviews-wp' ); ?></label>
 # </p>
 # wpml-name: 0a3b6219dc0bdff0fdee8972f66073f1
 msgid "Don't show the rating"
 msgstr "אל תציג דירוג"
 
-# <?php echo __( 'out of', GRFWP_TEXTDOMAIN ); ?>
-# <label for="grfwp[rating_max]" class="screen-reader-text"><?php echo __( 'Maximum rating possible', GRFWP_TEXTDOMAIN ); ?></label>
+# <?php echo __( 'out of', 'good-reviews-wp' ); ?>
+# <label for="grfwp[rating_max]" class="screen-reader-text"><?php echo __( 'Maximum rating possible', 'good-reviews-wp' ); ?></label>
 # <input type="number" step="1" min="0" class="inline-text-number" name="grfwp[rating_max]" id="grfwp[rating_max]" value="<?php echo esc_attr( $rating_max ); ?>">
 # wpml-name: f639660f210163e9a606158977e320ad
 msgid "Maximum rating possible"
 msgstr "דירוג מירבי אפשרי"
 
 # <input type="number" step="1" min="0" class="inline-text-number" name="grfwp[rating]" id="grfwp[rating]" value="<?php echo esc_attr( $rating ); ?>">
-# <?php echo __( 'out of', GRFWP_TEXTDOMAIN ); ?>
-# <label for="grfwp[rating_max]" class="screen-reader-text"><?php echo __( 'Maximum rating possible', GRFWP_TEXTDOMAIN ); ?></label>
+# <?php echo __( 'out of', 'good-reviews-wp' ); ?>
+# <label for="grfwp[rating_max]" class="screen-reader-text"><?php echo __( 'Maximum rating possible', 'good-reviews-wp' ); ?></label>
 # wpml-name: 663fc7093256cda156e571631ddb295e
 msgid "out of"
 msgstr "מתוך"
 
 # <p>
-# <label for="grfwp[review_date]"><?php echo __( 'Review Date', GRFWP_TEXTDOMAIN ); ?></label><br>
+# <label for="grfwp[review_date]"><?php echo __( 'Review Date', 'good-reviews-wp' ); ?></label><br>
 # <input type="text" name="grfwp[review_date]" id="grfwp[review_date]" value="<?php echo esc_attr( $review_date ); ?>">
 # wpml-name: 43629fb18eed3c436735459e66be4225
 msgid "Review Date"
 msgstr "תאריך הסקירה"
 
 # <p>
-# <label for="grfwp[reviewer_url]"><?php echo __( 'Organization Website', GRFWP_TEXTDOMAIN ); ?></label><br>
+# <label for="grfwp[reviewer_url]"><?php echo __( 'Organization Website', 'good-reviews-wp' ); ?></label><br>
 # <input type="text" name="grfwp[reviewer_url]" id="grfwp[reviewer_url]" value="<?php echo esc_attr( $reviewer_url ); ?>" placeholder="http://">
 # wpml-name: fc36c9211c6e2088a76bb7c4c5e3ffee
 msgid "Organization Website"
 msgstr "אתר ארגון"
 
 # <p>
-# <label for="grfwp[reviewer_org]"><?php echo __( 'Reviewer Organization', GRFWP_TEXTDOMAIN ); ?></label><br>
+# <label for="grfwp[reviewer_org]"><?php echo __( 'Reviewer Organization', 'good-reviews-wp' ); ?></label><br>
 # <input type="text" name="grfwp[reviewer_org]" id="grfwp[reviewer_org]" value="<?php echo esc_attr( $reviewer_org ); ?>">
 # wpml-name: 84804281306290dc453283a3b80dc62e
 msgid "Reviewer Organization"
 msgstr "ארגון הסוקר"
 
 # 'id'		=>	'grfwp_shortcode',
-# 'title'		=> __( 'Review Shortcode', GRFWP_TEXTDOMAIN ),
+# 'title'		=> __( 'Review Shortcode', 'good-reviews-wp' ),
 # 'callback'	=> array( $this, 'show_shortcode' ),
 # wpml-name: da04537ad9540257d7ccfbfb2c3a8ac3
 msgid "Review Shortcode"
 msgstr "קיצור קוד הסקירה"
 
 # <p>
-# <label for="grfwp[rating]"><?php echo __( 'Rating', GRFWP_TEXTDOMAIN ); ?></label><br>
+# <label for="grfwp[rating]"><?php echo __( 'Rating', 'good-reviews-wp' ); ?></label><br>
 # <input type="number" step="1" min="0" class="inline-text-number" name="grfwp[rating]" id="grfwp[rating]" value="<?php echo esc_attr( $rating ); ?>">
 # wpml-name: dda9c06f33071c9b6fc237ee164109d8
 msgid "Rating"
 msgstr "דירוג"
 
 # 'id'		=>	'grfwp_reviewer',
-# 'title'		=> __( 'Reviewer Details', GRFWP_TEXTDOMAIN ),
+# 'title'		=> __( 'Reviewer Details', 'good-reviews-wp' ),
 # 'callback'	=> array( $this, 'show_reviewer' ),
 # wpml-name: a67ecc9bbd59731c6f76d37964d1e619
 msgid "Reviewer Details"
 msgstr "פרטי הסוקר"
 
 # <p>
-# <label for="grfwp[review_url]" class="screen-reader-text"><?php echo __( 'Review Link', GRFWP_TEXTDOMAIN ); ?></label>
+# <label for="grfwp[review_url]" class="screen-reader-text"><?php echo __( 'Review Link', 'good-reviews-wp' ); ?></label>
 # <input class="large-text" type="text" name="grfwp[review_url]" id="grfwp[review_url]" value="<?php echo esc_attr( $review_url ); ?>" placeholder="http://">
 # wpml-name: 75015f7f4fa07a9f407b05ddc5433441
 msgid "Review Link"
 msgstr "קישור הסקירה"
 
-# 'not_found_in_trash' => __( 'No reviews found in trash', GRFWP_TEXTDOMAIN ),
-# 'all_items'          => __( 'All Reviews',               GRFWP_TEXTDOMAIN ),
+# 'not_found_in_trash' => __( 'No reviews found in trash', 'good-reviews-wp' ),
+# 'all_items'          => __( 'All Reviews',               'good-reviews-wp' ),
 # ),
 # wpml-name: 49b2887a9aeb69b3c417205ab1e6418b
 msgid "All Reviews"
 msgstr "כל הסקירות"
 
-# 'not_found'          => __( 'No reviews found',          GRFWP_TEXTDOMAIN ),
-# 'not_found_in_trash' => __( 'No reviews found in trash', GRFWP_TEXTDOMAIN ),
-# 'all_items'          => __( 'All Reviews',               GRFWP_TEXTDOMAIN ),
+# 'not_found'          => __( 'No reviews found',          'good-reviews-wp' ),
+# 'not_found_in_trash' => __( 'No reviews found in trash', 'good-reviews-wp' ),
+# 'all_items'          => __( 'All Reviews',               'good-reviews-wp' ),
 # wpml-name: 44f2a2151344a95e26bcb63d03b59ddc
 msgid "No reviews found in trash"
 msgstr "לא נמצאו סקירות באשפה"
 
-# 'search_items'       => __( 'Search Reviews',            GRFWP_TEXTDOMAIN ),
-# 'not_found'          => __( 'No reviews found',          GRFWP_TEXTDOMAIN ),
-# 'not_found_in_trash' => __( 'No reviews found in trash', GRFWP_TEXTDOMAIN ),
+# 'search_items'       => __( 'Search Reviews',            'good-reviews-wp' ),
+# 'not_found'          => __( 'No reviews found',          'good-reviews-wp' ),
+# 'not_found_in_trash' => __( 'No reviews found in trash', 'good-reviews-wp' ),
 # wpml-name: fb03c150418a15974b4e3f21741dfcf8
 msgid "No reviews found"
 msgstr "לא נמצאו סקירות"
 
-# 'view_item'          => __( 'View Review',               GRFWP_TEXTDOMAIN ),
-# 'search_items'       => __( 'Search Reviews',            GRFWP_TEXTDOMAIN ),
-# 'not_found'          => __( 'No reviews found',          GRFWP_TEXTDOMAIN ),
+# 'view_item'          => __( 'View Review',               'good-reviews-wp' ),
+# 'search_items'       => __( 'Search Reviews',            'good-reviews-wp' ),
+# 'not_found'          => __( 'No reviews found',          'good-reviews-wp' ),
 # wpml-name: d9cb980ac9179dc8c9fad36b1fd2b04d
 msgid "Search Reviews"
 msgstr "חיפוש סקירות"
 
-# 'new_item'           => __( 'New Review',                GRFWP_TEXTDOMAIN ),
-# 'view_item'          => __( 'View Review',               GRFWP_TEXTDOMAIN ),
-# 'search_items'       => __( 'Search Reviews',            GRFWP_TEXTDOMAIN ),
+# 'new_item'           => __( 'New Review',                'good-reviews-wp' ),
+# 'view_item'          => __( 'View Review',               'good-reviews-wp' ),
+# 'search_items'       => __( 'Search Reviews',            'good-reviews-wp' ),
 # wpml-name: 85a47588e06432f4a29eba27f44709a4
 msgid "View Review"
 msgstr "הצג סקירה"
 
-# 'edit_item'          => __( 'Edit Review',               GRFWP_TEXTDOMAIN ),
-# 'new_item'           => __( 'New Review',                GRFWP_TEXTDOMAIN ),
-# 'view_item'          => __( 'View Review',               GRFWP_TEXTDOMAIN ),
+# 'edit_item'          => __( 'Edit Review',               'good-reviews-wp' ),
+# 'new_item'           => __( 'New Review',                'good-reviews-wp' ),
+# 'view_item'          => __( 'View Review',               'good-reviews-wp' ),
 # wpml-name: 05b9fd016d7d03ffc7374a41a8cf571f
 msgid "New Review"
 msgstr "סקירה חדשה"
 
-# 'add_new_item'       => __( 'Add New Review',            GRFWP_TEXTDOMAIN ),
-# 'edit_item'          => __( 'Edit Review',               GRFWP_TEXTDOMAIN ),
-# 'new_item'           => __( 'New Review',                GRFWP_TEXTDOMAIN ),
+# 'add_new_item'       => __( 'Add New Review',            'good-reviews-wp' ),
+# 'edit_item'          => __( 'Edit Review',               'good-reviews-wp' ),
+# 'new_item'           => __( 'New Review',                'good-reviews-wp' ),
 # wpml-name: e9f1abd18b4bf900eabbf037b6b99d52
 msgid "Edit Review"
 msgstr "עריכת סקירה"
 
-# 'add_new'            => __( 'Add New',                 	 GRFWP_TEXTDOMAIN ),
-# 'add_new_item'       => __( 'Add New Review',            GRFWP_TEXTDOMAIN ),
-# 'edit_item'          => __( 'Edit Review',               GRFWP_TEXTDOMAIN ),
+# 'add_new'            => __( 'Add New',                 	 'good-reviews-wp' ),
+# 'add_new_item'       => __( 'Add New Review',            'good-reviews-wp' ),
+# 'edit_item'          => __( 'Edit Review',               'good-reviews-wp' ),
 # wpml-name: 5d1aa1f6119098eec71d9d80f59ed5e8
 msgid "Add New Review"
 msgstr "הוספת סקירה חדשה"
 
-# 'name_admin_bar'     => __( 'Reviews',                   GRFWP_TEXTDOMAIN ),
-# 'add_new'            => __( 'Add New',                 	 GRFWP_TEXTDOMAIN ),
-# 'add_new_item'       => __( 'Add New Review',            GRFWP_TEXTDOMAIN ),
+# 'name_admin_bar'     => __( 'Reviews',                   'good-reviews-wp' ),
+# 'add_new'            => __( 'Add New',                 	 'good-reviews-wp' ),
+# 'add_new_item'       => __( 'Add New Review',            'good-reviews-wp' ),
 # wpml-name: de9ced9bf5e9829de4a93ad8c9d7a170
 msgid "Add New"
 msgstr "הוספה"
 
-# 'name'               => __( 'Reviews',                   GRFWP_TEXTDOMAIN ),
-# 'singular_name'      => __( 'Review',                    GRFWP_TEXTDOMAIN ),
-# 'menu_name'          => __( 'Reviews',                   GRFWP_TEXTDOMAIN ),
+# 'name'               => __( 'Reviews',                   'good-reviews-wp' ),
+# 'singular_name'      => __( 'Review',                    'good-reviews-wp' ),
+# 'menu_name'          => __( 'Reviews',                   'good-reviews-wp' ),
 # wpml-name: 457dd55184faedb7885afd4009d70163
 msgid "Review"
 msgstr "סקירה"
 
-# 'name'               => __( 'Reviews',                   GRFWP_TEXTDOMAIN ),
-# 'singular_name'      => __( 'Review',                    GRFWP_TEXTDOMAIN ),
-# 'menu_name'          => __( 'Reviews',                   GRFWP_TEXTDOMAIN ),
+# 'name'               => __( 'Reviews',                   'good-reviews-wp' ),
+# 'singular_name'      => __( 'Review',                    'good-reviews-wp' ),
+# 'menu_name'          => __( 'Reviews',                   'good-reviews-wp' ),
 # wpml-name: 34e80a799d144cfe4af46815e103f017
 msgid "Reviews"
 msgstr "סקירות"
 
-# 'menu_name'          => __( 'Reviews',                   GRFWP_TEXTDOMAIN ),
-# 'name_admin_bar'     => __( 'Reviews',                   GRFWP_TEXTDOMAIN ),
-# 'add_new'            => __( 'Add New',                 	 GRFWP_TEXTDOMAIN ),
+# 'menu_name'          => __( 'Reviews',                   'good-reviews-wp' ),
+# 'name_admin_bar'     => __( 'Reviews',                   'good-reviews-wp' ),
+# 'add_new'            => __( 'Add New',                 	 'good-reviews-wp' ),
 # wpml-name: 74dcb1cec50854d2f880279f3dd19da9
 msgid "reviews"
 msgstr "סקירות"
 
-# 'update_item' 	=> __( 'Update Review Category', GRFWP_TEXTDOMAIN ),
-# 'add_new_item' 	=> __( 'Add New Review Category', GRFWP_TEXTDOMAIN ),
-# 'new_item_name' => __( 'Review Category', GRFWP_TEXTDOMAIN ),
+# 'update_item' 	=> __( 'Update Review Category', 'good-reviews-wp' ),
+# 'add_new_item' 	=> __( 'Add New Review Category', 'good-reviews-wp' ),
+# 'new_item_name' => __( 'Review Category', 'good-reviews-wp' ),
 # wpml-name: 077721454548e2eb7f20ea1ca2e1ffeb
 msgid "Add New Review Category"
 msgstr "הוספת קטגוריה חדשה לסקירה"
 
-# 'edit_item' 	=> __( 'Edit Review Category', GRFWP_TEXTDOMAIN ),
-# 'update_item' 	=> __( 'Update Review Category', GRFWP_TEXTDOMAIN ),
-# 'add_new_item' 	=> __( 'Add New Review Category', GRFWP_TEXTDOMAIN ),
+# 'edit_item' 	=> __( 'Edit Review Category', 'good-reviews-wp' ),
+# 'update_item' 	=> __( 'Update Review Category', 'good-reviews-wp' ),
+# 'add_new_item' 	=> __( 'Add New Review Category', 'good-reviews-wp' ),
 # wpml-name: 1c2ae120bc66ff84707e98dd0512cb14
 msgid "Update Review Category"
 msgstr "עדכון קטגוריית סקירה"
 
-# 'parent_item_colon' => __( 'Review Category:', GRFWP_TEXTDOMAIN ),
-# 'edit_item' 	=> __( 'Edit Review Category', GRFWP_TEXTDOMAIN ),
-# 'update_item' 	=> __( 'Update Review Category', GRFWP_TEXTDOMAIN ),
+# 'parent_item_colon' => __( 'Review Category:', 'good-reviews-wp' ),
+# 'edit_item' 	=> __( 'Edit Review Category', 'good-reviews-wp' ),
+# 'update_item' 	=> __( 'Update Review Category', 'good-reviews-wp' ),
 # wpml-name: 2aaf3030e1863f0d07d419d3d2f81445
 msgid "Edit Review Category"
 msgstr "עריכת קטגוריית סקירה"
 
-# 'parent_item' 	=> __( 'Review Category', GRFWP_TEXTDOMAIN ),
-# 'parent_item_colon' => __( 'Review Category:', GRFWP_TEXTDOMAIN ),
-# 'edit_item' 	=> __( 'Edit Review Category', GRFWP_TEXTDOMAIN ),
+# 'parent_item' 	=> __( 'Review Category', 'good-reviews-wp' ),
+# 'parent_item_colon' => __( 'Review Category:', 'good-reviews-wp' ),
+# 'edit_item' 	=> __( 'Edit Review Category', 'good-reviews-wp' ),
 # wpml-name: 1f319991ff0421ea5bc197effac0e8be
 msgid "Review Category:"
 msgstr "קטגוריית סקירה:"
 
-# 'name' 			=> _x( 'Review Categories', 'taxonomy general name', GRFWP_TEXTDOMAIN ),
-# 'singular_name' => _x( 'Review Category', 'taxonomy singular name', GRFWP_TEXTDOMAIN ),
-# 'search_items' 	=> __( 'Search Review Categories', GRFWP_TEXTDOMAIN ),
+# 'name' 			=> _x( 'Review Categories', 'taxonomy general name', 'good-reviews-wp' ),
+# 'singular_name' => _x( 'Review Category', 'taxonomy singular name', 'good-reviews-wp' ),
+# 'search_items' 	=> __( 'Search Review Categories', 'good-reviews-wp' ),
 # wpml-name: 2b60a0803857ee2d8465cdf987441760
 msgid "Review Category"
 msgstr "קטגוריית סקירה"
 
-# 'search_items' 	=> __( 'Search Review Categories', GRFWP_TEXTDOMAIN ),
-# 'all_items' 	=> __( 'All Review Categories', GRFWP_TEXTDOMAIN ),
-# 'parent_item' 	=> __( 'Review Category', GRFWP_TEXTDOMAIN ),
+# 'search_items' 	=> __( 'Search Review Categories', 'good-reviews-wp' ),
+# 'all_items' 	=> __( 'All Review Categories', 'good-reviews-wp' ),
+# 'parent_item' 	=> __( 'Review Category', 'good-reviews-wp' ),
 # wpml-name: c0cbdac15bbe3ae235a69ea283d251b2
 msgid "All Review Categories"
 msgstr "כל קטגוריות הסקירה"
 
-# 'singular_name' => _x( 'Review Category', 'taxonomy singular name', GRFWP_TEXTDOMAIN ),
-# 'search_items' 	=> __( 'Search Review Categories', GRFWP_TEXTDOMAIN ),
-# 'all_items' 	=> __( 'All Review Categories', GRFWP_TEXTDOMAIN ),
+# 'singular_name' => _x( 'Review Category', 'taxonomy singular name', 'good-reviews-wp' ),
+# 'search_items' 	=> __( 'Search Review Categories', 'good-reviews-wp' ),
+# 'all_items' 	=> __( 'All Review Categories', 'good-reviews-wp' ),
 # wpml-name: 32ee28bbf6cb75e9094f48c649bcb6fd
 msgid "Search Review Categories"
 msgstr "חיפוש בקטגוריות הסקירה"

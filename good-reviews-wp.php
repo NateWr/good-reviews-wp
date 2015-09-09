@@ -72,7 +72,7 @@ class grfwpInit {
 	public function init() {
 
 		// Common strings
-		define( 'GRFWP_TEXTDOMAIN', 'good-reviews-wp' );
+		define( 'GRFWP_TEXTDOMAIN', 'good-reviews-wp' ); // keep for back compat
 		define( 'GRFWP_PLUGIN_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 		define( 'GRFWP_PLUGIN_URL', untrailingslashit( plugins_url( basename( plugin_dir_path( __FILE__ ) ), basename( __FILE__ ) ) ) );
 		define( 'GRFWP_PLUGIN_FNAME', plugin_basename( __FILE__ ) );
@@ -129,7 +129,7 @@ class grfwpInit {
 	 * @since 0.0.1
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( GRFWP_TEXTDOMAIN, false, plugin_basename( dirname( __FILE__ ) ) . "/languages/" );
+		load_plugin_textdomain( 'good-reviews-wp', false, plugin_basename( dirname( __FILE__ ) ) . "/languages/" );
 
 		// Backwards compatibility
 		load_plugin_textdomain( 'grfwpdomain', false, plugin_basename( dirname( __FILE__ ) ) . "/languages/" );
@@ -160,7 +160,7 @@ class grfwpInit {
 		 $screen = get_current_screen();
 
 		 if  ( $screen->post_type == GRFWP_REVIEW_POST_TYPE ) {
-			  $title = __( 'Enter reviewer here', GRFWP_TEXTDOMAIN );
+			  $title = __( 'Enter reviewer here', 'good-reviews-wp' );
 		 }
 
 		 return $title;
@@ -330,7 +330,7 @@ class grfwpInit {
 
 		if ( $plugin == GRFWP_PLUGIN_FNAME ) {
 
-			$links['help'] = '<a href="' . GRFWP_PLUGIN_URL . '/docs" title="' . __( 'View the help documentation for Business Profile', GRFWP_TEXTDOMAIN ) . '">' . __( 'Help', GRFWP_TEXTDOMAIN ) . '</a>';
+			$links['help'] = '<a href="' . GRFWP_PLUGIN_URL . '/docs" title="' . __( 'View the help documentation for Business Profile', 'good-reviews-wp' ) . '">' . __( 'Help', 'good-reviews-wp' ) . '</a>';
 		}
 
 		return $links;

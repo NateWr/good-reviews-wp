@@ -165,14 +165,14 @@ function grfwp_print_reviews( $args = array() ) {
 
 						<?php if ( $post_meta['review_url'] ) : ?>
 						<a class="gr-review-url" itemprop="url" href="<?php echo esc_attr( $post_meta['review_url'] ); ?>">
-							<?php echo __( 'Read More', GRFWP_TEXTDOMAIN); ?>
+							<?php echo __( 'Read More', 'good-reviews-wp'); ?>
 						</a>
 						<?php endif;
 
 					else :
 					?>
 						<a class="gr-review-url" itemprop="sameAs" href="<?php echo get_permalink(); ?>">
-							<?php echo __( 'Read More', GRFWP_TEXTDOMAIN); ?>
+							<?php echo __( 'Read More', 'good-reviews-wp'); ?>
 						</a>
 					<?php endif; ?>
 

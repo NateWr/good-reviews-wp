@@ -16,8 +16,8 @@ class grfwpWidgetReviews extends WP_Widget {
 
 		parent::__construct(
 			'grfwp_widget_reviews',
-			__( 'Good Reviews', GRFWP_TEXTDOMAIN ),
-			array( 'description' => __( 'Display one or all of your reviews.', GRFWP_TEXTDOMAIN ), )
+			__( 'Good Reviews', 'good-reviews-wp' ),
+			array( 'description' => __( 'Display one or all of your reviews.', 'good-reviews-wp' ), )
 		);
 
 	}
@@ -75,13 +75,13 @@ class grfwpWidgetReviews extends WP_Widget {
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"> <?php _e( 'Title', GRFWP_TEXTDOMAIN ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"> <?php _e( 'Title', 'good-reviews-wp' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text"<?php if ( isset( $instance['title'] ) ) : ?> value="<?php echo esc_attr( $instance['title'] ); ?>"<?php endif; ?>>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'review' ); ?>"> <?php _e( 'Reviews to display' ); ?></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'review' ); ?>" name="<?php echo $this->get_field_name( 'review' ); ?>">
-				<option value=""><?php _e( 'Show all reviews', GRFWP_TEXTDOMAIN ); ?></option>
+				<option value=""><?php _e( 'Show all reviews', 'good-reviews-wp' ); ?></option>
 
 				<?php
 
@@ -94,7 +94,7 @@ class grfwpWidgetReviews extends WP_Widget {
 
 				foreach( $categories as $category ) {
 					?>
-					<option value="cat-<?php echo $category->slug; ?>"<?php if ( $review == 'cat-' . $category->slug ) : ?> selected<?php endif; ?>><?php echo __( 'Category: ', GRFWP_TEXTDOMAIN )  . esc_attr( $category->name ); ?></option>
+					<option value="cat-<?php echo $category->slug; ?>"<?php if ( $review == 'cat-' . $category->slug ) : ?> selected<?php endif; ?>><?php echo __( 'Category: ', 'good-reviews-wp' )  . esc_attr( $category->name ); ?></option>
 					<?php
 				}
 
