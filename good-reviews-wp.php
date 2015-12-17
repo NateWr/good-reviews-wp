@@ -341,6 +341,7 @@ class grfwpInit {
 } // endif;
 
 // Global instance
+global $grfwp_controller;
 $grfwp_controller = grfwpInit::instance();
 
 // Flush the rewrite rules for the custom post types
