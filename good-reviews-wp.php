@@ -330,7 +330,7 @@ class grfwpInit {
 
 		if ( $plugin == GRFWP_PLUGIN_FNAME ) {
 
-			$links['help'] = '<a href="' . GRFWP_PLUGIN_URL . '/docs" title="' . __( 'View the help documentation for Business Profile', 'good-reviews-wp' ) . '">' . __( 'Help', 'good-reviews-wp' ) . '</a>';
+			$links['help'] = '<a href="http://doc.themeofthecrop.com/plugins/good-reviews-wp/?utm_source=Plugin&utm_medium=Plugin%Help&utm_campaign=Good%20Reviews" title="' . __( 'View the help documentation for Good Reviews for WordPress', 'good-reviews-wp' ) . '">' . __( 'Help', 'good-reviews-wp' ) . '</a>';
 		}
 
 		return $links;
