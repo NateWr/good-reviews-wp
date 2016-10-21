@@ -27,7 +27,7 @@ This plugin will output reviews using Schema.org markup to help search engines l
 
 **Sorry, it does not allow users to submit reviews.**
 
-This plugin is part of a group of plugins for restaurants. Check out the [Food and Drink Menu](http://wordpress.org/plugins/food-and-drink-menu/), [Restaurant Reservations](http://wordpress.org/plugins/restaurant-reservations/) and [Business Profile](http://wordpress.org/plugins/business-profile/) plugins as well.
+This plugin is one of a number of plugins provided by [Theme of the Crop](https://themeofthecrop.com/?utm_source=Plugin&utm_medium=Plugin%20Description&utm_campaign=Good%20Reviews) to help you build better restaurant websites. Take a look at our [great WordPress restaurant themes](https://themeofthecrop.com/themes/?utm_source=Plugin&utm_medium=Plugin%20Description&utm_campaign=Good%20Reviews), and our plugins to [take online reservations](https://themeofthecrop.com/plugins/restaurant-reservations/?utm_source=Plugin&utm_medium=Plugin%20Description&utm_campaign=Good%20Reviews), create [responsive online menus](https://themeofthecrop.com/plugins/food-and-drink-menu/?utm_source=Plugin&utm_medium=Plugin%20Description&utm_campaign=Good%20Reviews) and [boost a restaurant's SEO](https://themeofthecrop.com/restaurant-seo/?utm_source=Plugin&utm_medium=Plugin%20Description&utm_campaign=Good%20Reviews).
 
 = How to use =
 
